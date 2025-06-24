@@ -5,11 +5,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 const Products = () => {
   const products = [
     {
-      title: "Smart Inventory Assistant",
-      description: "Never run out of bestsellers or overstock slow movers again",
-      features: ["Predicts what you'll need", "Automates reorder alerts", "Tracks waste patterns"],
-      icon: "📦",
-      price: "Starting at $99/month"
+      title: "AnswerLift",
+      description: "Make sure your brand is the ChatGPT answer users see first",
+      features: ["Turns every page into chat-friendly Q-and-A blocks", "Auto-adds fresh facts & brand mentions each month", "Ships a ready-made LLMs.txt + entity map for full AEO compliance"],
+      icon: "🚀",
+      price: "Starting at $899/month"
     },
     {
       title: "Customer Insight Engine", 
@@ -29,7 +29,7 @@ const Products = () => {
       title: "Growth Autopilot",
       description: "Marketing that works while you sleep",
       features: ["Automates follow-ups", "Personalizes outreach", "Tracks what works"],
-      icon: "🚀",
+      icon: "📈",
       price: "Starting at $249/month"
     }
   ];
