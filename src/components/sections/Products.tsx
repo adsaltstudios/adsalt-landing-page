@@ -38,6 +38,48 @@ const Products = () => {
     }
   ];
 
+  const trainingPrograms = [
+    {
+      title: "Team AI Workshop",
+      description: "Get your whole team up to speed on AI tools that actually help",
+      features: [
+        "Live training tailored to your business",
+        "Hands-on practice with real examples",
+        "Simple guides your team can use later",
+        "Follow-up support for 30 days"
+      ],
+      icon: "👥",
+      price: "Starting at $1,499",
+      ctaText: "Schedule a workshop"
+    },
+    {
+      title: "Custom AI Training",
+      description: "One-on-one training for the AI tools your business needs most",
+      features: [
+        "Personalized to your specific workflow",
+        "Work on your actual business problems",
+        "Step-by-step implementation help",
+        "3 months of follow-up questions"
+      ],
+      icon: "🎯",
+      price: "Starting at $2,999",
+      ctaText: "Book custom training"
+    },
+    {
+      title: "AI Strategy Session",
+      description: "Figure out which AI tools will actually help your business grow",
+      features: [
+        "Review your current processes",
+        "Identify the biggest opportunities",
+        "Get a clear action plan",
+        "Templates you can use right away"
+      ],
+      icon: "🧠",
+      price: "Starting at $999",
+      ctaText: "Get your strategy"
+    }
+  ];
+
   return (
     <section id="products" className="py-20 px-6 bg-[#E9ECEF]">
       <div className="max-w-6xl mx-auto">
@@ -50,7 +92,7 @@ const Products = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 mb-20">
           {products.map((product, index) => (
             <Card key={index} className="bg-white hover:shadow-lg transition-all duration-300 hover:scale-105">
               <CardHeader>
@@ -87,16 +129,68 @@ const Products = () => {
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <p className="text-[#7D9BA6] mb-6">
-            Not sure which tool fits your business? Let's talk.
+        {/* Training Programs Section */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold text-[#305A72] mb-6">
+            Learn how to use AI in your business
+          </h2>
+          <p className="text-xl text-[#1E1E1E] max-w-2xl mx-auto">
+            Don't just get the tools—learn how to use them. Our training gets your team confident with AI, fast.
           </p>
-          <Button 
-            className="bg-[#305A72] hover:bg-[#D9B6A3] text-white px-8 py-3 text-lg"
-            onClick={openCalendly}
-          >
-            Schedule a free consultation
-          </Button>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
+          {trainingPrograms.map((program, index) => (
+            <Card key={index} className="bg-white hover:shadow-lg transition-all duration-300 hover:scale-105">
+              <CardHeader>
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 bg-[#D9B6A3] rounded-lg flex items-center justify-center text-2xl">
+                    {program.icon}
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg text-[#305A72]">{program.title}</CardTitle>
+                    <p className="text-sm text-[#7D9BA6]">{program.price}</p>
+                  </div>
+                </div>
+                <CardDescription className="text-[#1E1E1E] text-base">
+                  {program.description}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 mb-6">
+                  {program.features.map((feature, i) => (
+                    <li key={i} className="flex items-center gap-2 text-[#1E1E1E]">
+                      <span className="w-2 h-2 bg-[#D9B6A3] rounded-full"></span>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                <Button 
+                  className="w-full bg-[#D9B6A3] hover:bg-[#305A72] text-white"
+                  onClick={openCalendly}
+                >
+                  {program.ctaText}
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        <div className="text-center">
+          <div className="bg-white p-8 rounded-lg max-w-2xl mx-auto">
+            <h3 className="text-2xl font-bold text-[#305A72] mb-4">
+              Not sure what your team needs?
+            </h3>
+            <p className="text-[#1E1E1E] mb-6">
+              Let's talk about where you're struggling and figure out the best way to help.
+            </p>
+            <Button 
+              className="bg-[#305A72] hover:bg-[#D9B6A3] text-white px-8 py-3 text-lg"
+              onClick={openCalendly}
+            >
+              Schedule a free consultation
+            </Button>
+          </div>
         </div>
       </div>
     </section>
