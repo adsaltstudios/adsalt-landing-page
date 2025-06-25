@@ -19,7 +19,7 @@ const Products = () => {
       title: "Customer Insight Engine", 
       description: "Know your customers better than they know themselves",
       features: ["Spots buying patterns", "Suggests upsells", "Predicts churn risk"],
-      benefit: "Turn data into profit with smarter customer decisions",
+      benefit: "Turn data into dollars with smarter customer decisions",
       icon: "👥",
       price: "Starting at $149"
     },
@@ -35,7 +35,7 @@ const Products = () => {
       title: "Growth Autopilot",
       description: "Marketing that works while you sleep",
       features: ["Automates follow-ups", "Personalizes outreach", "Tracks what works"],
-      benefit: "Scale your reach without burning out your team",
+      benefit: "Scale your reach without burning out",
       icon: "📈",
       price: "Starting at $249"
     }
@@ -108,14 +108,14 @@ const Products = () => {
                     </li>
                   ))}
                 </ul>
-                <p className="text-[#305A72] font-medium mb-6 text-sm">
+                <p className="text-xl text-[#305A72] font-semibold mb-6">
                   {product.benefit}
                 </p>
                 <Button 
                   className="w-full bg-[#D9B6A3] hover:bg-[#305A72] text-white"
                   onClick={openCalendly}
                 >
-                  {index === 0 ? "Get found by AI" : "Learn more"}
+                  Learn more
                 </Button>
               </CardContent>
             </Card>
