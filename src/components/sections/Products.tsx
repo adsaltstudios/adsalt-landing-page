@@ -1,4 +1,5 @@
 
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -164,9 +165,9 @@ const Products = () => {
         </div>
 
         <div className="text-center">
-          <h3 className="text-3xl md:text-5xl font-bold text-[#305A72] mb-4">
+          <p className="text-xl text-[#1E1E1E] mb-4">
             Not sure what your team needs?
-          </h3>
+          </p>
           <Button 
             className="bg-[#305A72] hover:bg-[#D9B6A3] text-white px-8 py-3 text-lg"
             onClick={openCalendly}
@@ -180,3 +181,4 @@ const Products = () => {
 };
 
 export default Products;
+
