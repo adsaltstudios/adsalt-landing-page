@@ -1,5 +1,3 @@
-
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -14,28 +12,28 @@ const Products = () => {
       description: "Make sure your brand is the ChatGPT answer users see first",
       features: ["Turns every page into chat-friendly Q-and-A blocks", "Auto-adds fresh facts & brand mentions each month", "Ships a ready-made LLMs.txt + entity map for full AEO compliance"],
       icon: "🚀",
-      price: "Starting at $899/month"
+      price: "$899"
     },
     {
       title: "Customer Insight Engine", 
       description: "Know your customers better than they know themselves",
       features: ["Spots buying patterns", "Suggests upsells", "Predicts churn risk"],
       icon: "👥",
-      price: "Starting at $149/month"
+      price: "$149"
     },
     {
       title: "Profit Leak Detector",
       description: "Find money hiding in your business processes",
       features: ["Identifies cost drains", "Optimizes pricing", "Streamlines workflows"],
       icon: "🔍",
-      price: "Starting at $199/month"
+      price: "$199"
     },
     {
       title: "Growth Autopilot",
       description: "Marketing that works while you sleep",
       features: ["Automates follow-ups", "Personalizes outreach", "Tracks what works"],
       icon: "📈",
-      price: "Starting at $249/month"
+      price: "$249"
     }
   ];
 
@@ -181,4 +179,3 @@ const Products = () => {
 };
 
 export default Products;
-
