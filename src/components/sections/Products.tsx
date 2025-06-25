@@ -46,7 +46,7 @@ const Products = () => {
             AI tools built for real businesses
           </h2>
           <p className="text-xl text-[#1E1E1E] max-w-2xl mx-auto">
-            No complicated setup. No tech degree required. Just simple tools that save you time and make you money.
+            No complicated setup. No tech degree required. Just simple tools and training that save you time and make you money.
           </p>
         </div>
 
