@@ -8,9 +8,10 @@ const Products = () => {
 
   const products = [
     {
-      title: "Answer Optimizer",
+      title: "Chat Answer Optimizer",
       description: "Most local businesses get skipped when AI answers customer questions",
       features: ["Formats content for chatbots", "Adds brand mentions monthly", "Builds AI-ready site maps"],
+      benefit: "Win back lost traffic and save thousands yearly",
       icon: "🚀",
       price: "Starting at $899"
     },
@@ -18,22 +19,25 @@ const Products = () => {
       title: "Customer Insight Engine", 
       description: "Know your customers better than they know themselves",
       features: ["Spots buying patterns", "Suggests upsells", "Predicts churn risk"],
+      benefit: "Turn data into profit with smarter customer decisions",
       icon: "👥",
-      price: "$149"
+      price: "Starting at $149"
     },
     {
       title: "Profit Leak Detector",
       description: "Find money hiding in your business processes",
       features: ["Identifies cost drains", "Optimizes pricing", "Streamlines workflows"],
+      benefit: "Stop bleeding money and boost your bottom line",
       icon: "🔍",
-      price: "$199"
+      price: "Starting at $199"
     },
     {
       title: "Growth Autopilot",
       description: "Marketing that works while you sleep",
       features: ["Automates follow-ups", "Personalizes outreach", "Tracks what works"],
+      benefit: "Scale your reach without burning out your team",
       icon: "📈",
-      price: "$249"
+      price: "Starting at $249"
     }
   ];
 
@@ -96,7 +100,7 @@ const Products = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2 mb-6">
+                <ul className="space-y-2 mb-4">
                   {product.features.map((feature, i) => (
                     <li key={i} className="flex items-center gap-2 text-[#1E1E1E]">
                       <span className="w-2 h-2 bg-[#D9B6A3] rounded-full"></span>
@@ -104,6 +108,9 @@ const Products = () => {
                     </li>
                   ))}
                 </ul>
+                <p className="text-[#305A72] font-medium mb-6 text-sm">
+                  {product.benefit}
+                </p>
                 <Button 
                   className="w-full bg-[#D9B6A3] hover:bg-[#305A72] text-white"
                   onClick={openCalendly}
