@@ -163,20 +163,15 @@ const Products = () => {
         </div>
 
         <div className="text-center">
-          <div className="bg-white p-8 rounded-lg max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-[#305A72] mb-4">
-              Not sure what your team needs?
-            </h3>
-            <p className="text-[#1E1E1E] mb-6">
-              Let's talk about where you're struggling and figure out the best way to help.
-            </p>
-            <Button 
-              className="bg-[#305A72] hover:bg-[#D9B6A3] text-white px-8 py-3 text-lg"
-              onClick={openCalendly}
-            >
-              Schedule a free consultation
-            </Button>
-          </div>
+          <h3 className="text-2xl font-bold text-[#305A72] mb-4">
+            Not sure what your team needs?
+          </h3>
+          <Button 
+            className="bg-[#305A72] hover:bg-[#D9B6A3] text-white px-8 py-3 text-lg"
+            onClick={openCalendly}
+          >
+            Schedule a free consultation
+          </Button>
         </div>
       </div>
     </section>
