@@ -8,11 +8,11 @@ const Products = () => {
 
   const products = [
     {
-      title: "AnswerLift",
-      description: "Make sure your brand is the ChatGPT answer users see first",
-      features: ["Turns every page into chat-friendly Q-and-A blocks", "Auto-adds fresh facts & brand mentions each month", "Ships a ready-made LLMs.txt + entity map for full AEO compliance"],
+      title: "Answer Optimizer",
+      description: "Most local businesses get skipped when AI answers customer questions",
+      features: ["Formats content for chatbots", "Adds brand mentions monthly", "Builds AI-ready site maps"],
       icon: "🚀",
-      price: "$899"
+      price: "Starting at $899"
     },
     {
       title: "Customer Insight Engine", 
@@ -108,7 +108,7 @@ const Products = () => {
                   className="w-full bg-[#D9B6A3] hover:bg-[#305A72] text-white"
                   onClick={openCalendly}
                 >
-                  Learn more
+                  {index === 0 ? "Get found by AI" : "Learn more"}
                 </Button>
               </CardContent>
             </Card>
