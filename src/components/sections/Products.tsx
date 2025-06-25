@@ -3,6 +3,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Products = () => {
+  const openCalendly = () => {
+    window.open('https://calendly.com/adam-adsalt/30min', '_blank');
+  };
+
   const products = [
     {
       title: "AnswerLift",
@@ -72,7 +76,10 @@ const Products = () => {
                     </li>
                   ))}
                 </ul>
-                <Button className="w-full bg-[#D9B6A3] hover:bg-[#305A72] text-white">
+                <Button 
+                  className="w-full bg-[#D9B6A3] hover:bg-[#305A72] text-white"
+                  onClick={openCalendly}
+                >
                   Learn more
                 </Button>
               </CardContent>
@@ -84,7 +91,10 @@ const Products = () => {
           <p className="text-[#7D9BA6] mb-6">
             Not sure which tool fits your business? Let's talk.
           </p>
-          <Button className="bg-[#305A72] hover:bg-[#D9B6A3] text-white px-8 py-3 text-lg">
+          <Button 
+            className="bg-[#305A72] hover:bg-[#D9B6A3] text-white px-8 py-3 text-lg"
+            onClick={openCalendly}
+          >
             Schedule a free consultation
           </Button>
         </div>

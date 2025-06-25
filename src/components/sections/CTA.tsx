@@ -10,6 +10,12 @@ const CTA = () => {
     e.preventDefault();
     // Handle form submission
     console.log("Email submitted:", email);
+    // Redirect to Calendly after form submission
+    window.open('https://calendly.com/adam-adsalt/30min', '_blank');
+  };
+
+  const openCalendly = () => {
+    window.open('https://calendly.com/adam-adsalt/30min', '_blank');
   };
 
   return (
@@ -54,7 +60,7 @@ const CTA = () => {
 
         <div className="mt-12 text-center">
           <p className="text-[#D7EAFB] text-lg">
-            Questions? Call us at <span className="font-semibold">(555) 123-4567</span>
+            Questions? Call us at <span className="font-semibold">(845) 323-5284</span>
           </p>
         </div>
       </div>

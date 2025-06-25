@@ -6,6 +6,10 @@ const Header = () => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const openCalendly = () => {
+    window.open('https://calendly.com/adam-adsalt/30min', '_blank');
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-[#E9ECEF]">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -13,7 +17,7 @@ const Header = () => {
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 flex items-center justify-center">
             <img 
-              src="https://i.ibb.co/QvJjNWL6/path113.png" 
+              src="https://i.ibb.co/YMpTFS5/Ad-Salt-PNG-11.png" 
               alt="Adsalt Studios Logo" 
               className="w-full h-full object-contain"
             />
@@ -43,7 +47,7 @@ const Header = () => {
           </button>
           <Button 
             className="bg-[#D9B6A3] hover:bg-[#305A72] text-white px-6 py-2 rounded-lg transition-all duration-300"
-            onClick={() => scrollToSection('cta')}
+            onClick={openCalendly}
           >
             Let's Talk
           </Button>
