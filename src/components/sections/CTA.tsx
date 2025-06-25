@@ -104,7 +104,7 @@ const CTA = () => {
               className="w-full bg-[#D9B6A3] hover:bg-[#305A72] text-white text-lg py-3"
               disabled={isLoading}
             >
-              {isLo ading ? "Processing..." : "Let's talk"}
+              {isLoading ? "Processing..." : "Let's talk"}
             </Button>
           </form>
           
