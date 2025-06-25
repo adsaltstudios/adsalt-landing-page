@@ -49,7 +49,7 @@ const CTA = () => {
               type="submit"
               className="w-full bg-[#D9B6A3] hover:bg-[#305A72] text-white text-lg py-3"
             >
-              Schedule my free consultation
+              Get my free assessment
             </Button>
           </form>
           
