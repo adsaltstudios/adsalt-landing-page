@@ -4,7 +4,16 @@ const Footer = () => {
     <footer className="py-12 px-6 bg-[#1E1E1E]">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
-          <h3 className="text-2xl font-bold text-white mb-2">🧂 Adsalt Studios</h3>
+          <div className="flex items-center justify-center gap-3 mb-2">
+            <div className="w-8 h-8 flex items-center justify-center">
+              <img 
+                src="https://i.ibb.co/YMpTFS5/Ad-Salt-PNG-11.png" 
+                alt="Adsalt Studios Logo" 
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <h3 className="text-2xl font-bold text-white">Adsalt Studios</h3>
+          </div>
           <p className="text-[#A4B9C7]">Reviving the village, one small business at a time.</p>
         </div>
         

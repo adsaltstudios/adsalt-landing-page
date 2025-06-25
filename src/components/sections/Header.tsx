@@ -17,7 +17,7 @@ const Header = () => {
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 flex items-center justify-center">
             <img 
-              src="https://i.ibb.co/YMpTFS5/Ad-Salt-PNG-11.png" 
+              src="https://i.ibb.co/QvJjNWL6/path113.png" 
               alt="Adsalt Studios Logo" 
               className="w-full h-full object-contain"
             />
