@@ -1,9 +1,14 @@
+
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 
 const Hero = () => {
   const scrollToProducts = () => {
     document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const openCalendly = () => {
+    window.open('https://calendly.com/adam-adsalt/30min', '_blank');
   };
 
   return (
@@ -29,6 +34,7 @@ const Hero = () => {
           <Button 
             variant="ghost" 
             className="text-[#305A72] hover:text-[#D9B6A3] text-lg px-8 py-6 hover:underline"
+            onClick={openCalendly}
           >
             Schedule a chat
           </Button>
