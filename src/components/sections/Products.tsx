@@ -163,7 +163,7 @@ const Products = () => {
         </div>
 
         <div className="text-center">
-          <p className="text-xl text-[#A4B9C7] mb-4">
+          <p className="text-xl text-[#1E1E1E] mb-4">
             Not sure what your team needs?
           </p>
           <Button 
