@@ -2,16 +2,69 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 const CTA = () => {
   const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Email submitted:", email);
-    // Redirect to Calendly after form submission
-    window.open('https://calendly.com/adam-adsalt/30min', '_blank');
+    
+    if (!email.trim()) {
+      toast({
+        title: "Email required",
+        description: "Please enter your email address to continue.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      toast({
+        title: "Invalid email",
+        description: "Please enter a valid email address.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      // Simulate a brief delay for better UX
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      console.log("Email submitted:", email);
+      
+      toast({
+        title: "Success!",
+        description: "Your email has been recorded. Opening calendar to schedule your free assessment...",
+      });
+
+      // Clear the form
+      setEmail("");
+      
+      // Small delay before opening Calendly for better UX
+      setTimeout(() => {
+        window.open('https://calendly.com/adam-adsalt/30min', '_blank');
+      }, 1500);
+
+    } catch (error) {
+      toast({
+        title: "Something went wrong",
+        description: "Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const openCalendly = () => {
@@ -44,12 +97,14 @@ const CTA = () => {
               onChange={(e) => setEmail(e.target.value)}
               className="bg-[#D7EAFB] border-[#A4B9C7] focus:border-[#D9B6A3] text-lg py-3"
               required
+              disabled={isLoading}
             />
             <Button 
               type="submit"
               className="w-full bg-[#D9B6A3] hover:bg-[#305A72] text-white text-lg py-3"
+              disabled={isLoading}
             >
-              Get my free assessment
+              {isLoading ? "Processing..." : "Get my free assessment"}
             </Button>
           </form>
           
