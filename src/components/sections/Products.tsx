@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -40,43 +39,30 @@ const Products = () => {
 
   const trainingPrograms = [
     {
-      title: "Team AI Workshop",
-      description: "Get your whole team up to speed on AI tools that actually help",
+      title: "Team AI Workshop (Virtual)",
+      description: "Get your whole team using AI tools that actually help",
       features: [
-        "Live training tailored to your business",
-        "Hands-on practice with real examples",
-        "Simple guides your team can use later",
-        "Follow-up support for 30 days"
+        "Live online training for your team",
+        "Practice with tools you'll actually use",
+        "Simple guides to reference later",
+        "30 days of follow-up support"
       ],
       icon: "👥",
       price: "Starting at $1,499",
       ctaText: "Schedule a workshop"
     },
     {
-      title: "Custom AI Training",
-      description: "One-on-one training for the AI tools your business needs most",
+      title: "Custom AI Training (On-site)",
+      description: "Hands-on training at your location for maximum impact",
       features: [
-        "Personalized to your specific workflow",
-        "Work on your actual business problems",
-        "Step-by-step implementation help",
-        "3 months of follow-up questions"
+        "In-person training at your office",
+        "Work on your real business problems",
+        "Custom implementation for your workflow",
+        "3 months of ongoing support"
       ],
       icon: "🎯",
       price: "Starting at $2,999",
-      ctaText: "Book custom training"
-    },
-    {
-      title: "AI Strategy Session",
-      description: "Figure out which AI tools will actually help your business grow",
-      features: [
-        "Review your current processes",
-        "Identify the biggest opportunities",
-        "Get a clear action plan",
-        "Templates you can use right away"
-      ],
-      icon: "🧠",
-      price: "Starting at $999",
-      ctaText: "Get your strategy"
+      ctaText: "Book on-site training"
     }
   ];
 
@@ -139,7 +125,7 @@ const Products = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
           {trainingPrograms.map((program, index) => (
             <Card key={index} className="bg-white hover:shadow-lg transition-all duration-300 hover:scale-105">
               <CardHeader>
