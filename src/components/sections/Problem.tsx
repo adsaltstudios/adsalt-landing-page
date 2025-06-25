@@ -35,7 +35,7 @@ const Problem = () => {
 
         <div className="text-center">
           <p className="text-xl text-[#305A72] font-semibold">
-            What if smart tools could handle the boring stuff, so you could focus on what matters?
+            Smart tools can handle the boring stuff, so you can focus on what matters.
           </p>
         </div>
       </div>

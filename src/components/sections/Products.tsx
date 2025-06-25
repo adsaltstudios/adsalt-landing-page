@@ -18,7 +18,7 @@ const Products = () => {
     },
     {
       title: "Customer Insight Engine", 
-      description: "Know your customers better than they know themselves",
+      description: "Spot patterns in your customer data you've been missing",
       features: ["Spots buying patterns", "Suggests upsells", "Predicts churn risk"],
       benefit: "Turn data into dollars with smarter customer decisions",
       icon: "👥",
@@ -178,7 +178,7 @@ const Products = () => {
             className="bg-[#305A72] hover:bg-[#D9B6A3] text-white px-8 py-3 text-lg"
             onClick={openCalendly}
           >
-            Schedule a free consultation
+            Let's talk it through
           </Button>
         </div>
       </div>

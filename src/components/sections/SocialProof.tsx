@@ -28,7 +28,7 @@ const SocialProof = () => {
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-[#305A72] mb-6">
-            Real results from real businesses
+            What local businesses are saying
           </h2>
           <p className="text-xl text-[#1E1E1E]">
             These aren't tech companies. They're neighbors, just like you.

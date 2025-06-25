@@ -78,7 +78,7 @@ const CTA = () => {
           Ready to work smarter?
         </h2>
         <p className="text-xl text-[#D7EAFB] mb-8 max-w-2xl mx-auto">
-          Book a free 30-minute consultation. We'll show you exactly how AI can save you time and money—no sales pitch, just real solutions.
+          30-minute chat. We'll show you exactly how AI can help your business. No sales pitch.
         </p>
 
         <div className="bg-white p-8 rounded-lg max-w-2xl mx-auto">
@@ -104,7 +104,7 @@ const CTA = () => {
               className="w-full bg-[#D9B6A3] hover:bg-[#305A72] text-white text-lg py-3"
               disabled={isLoading}
             >
-              {isLoading ? "Processing..." : "Get my free assessment"}
+              {isLo ading ? "Processing..." : "Let's talk"}
             </Button>
           </form>
           
