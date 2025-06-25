@@ -108,7 +108,7 @@ const Products = () => {
                     </li>
                   ))}
                 </ul>
-                <p className="text-xl text-[#305A72] font-semibold mb-6">
+                <p className="text-base text-[#1E1E1E] font-semibold mb-6">
                   {product.benefit}
                 </p>
                 <Button 
