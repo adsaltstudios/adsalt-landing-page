@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -163,7 +164,7 @@ const Products = () => {
         </div>
 
         <div className="text-center">
-          <h3 className="text-2xl font-bold text-[#305A72] mb-4">
+          <h3 className="text-3xl md:text-5xl font-bold text-[#305A72] mb-4">
             Not sure what your team needs?
           </h3>
           <Button 
