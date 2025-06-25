@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -35,7 +36,7 @@ const Products = () => {
       title: "Growth Autopilot",
       description: "Marketing that works while you sleep",
       features: ["Automates follow-ups", "Personalizes outreach", "Tracks what works"],
-      benefit: "Scale your reach without burning out",
+      benefit: "Scale your reach without burning out your team",
       icon: "📈",
       price: "Starting at $249"
     }
