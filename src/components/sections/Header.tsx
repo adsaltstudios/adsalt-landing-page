@@ -26,7 +26,7 @@ const Header = () => {
             <img 
               src="https://i.ibb.co/QvJjNWL6/path113.png" 
               alt="Adsalt Studios Logo" 
-              className="w-full h-full object-contain"
+              className="w-16 h-16 object-contain"
             />
           </div>
           <span className="text-[#305A72] font-bold text-xl">Adsalt Studios</span>
