@@ -1,11 +1,8 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
-import { useRef } from "react";
 
 const Hero = () => {
-  const logoRef = useRef<HTMLImageElement>(null);
-
   const scrollToProducts = () => {
     document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -18,10 +15,9 @@ const Hero = () => {
     <section className="min-h-screen flex items-center justify-center px-6 bg-gradient-to-b from-[#D7EAFB] to-[#E9ECEF] pt-20">
       <div className="max-w-4xl mx-auto text-center animate-fade-in">
         <div className="mb-8">
-          {/* Logo with ref for scroll tracking */}
+          {/* Logo */}
           <div className="mb-8">
             <img 
-              ref={logoRef}
               src="https://i.ibb.co/QvJjNWL6/path113.png" 
               alt="Adsalt Studios Logo" 
               className="w-32 h-32 mx-auto object-contain"
