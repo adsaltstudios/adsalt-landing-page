@@ -1,8 +1,11 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
+import { useRef } from "react";
 
 const Hero = () => {
+  const logoRef = useRef(null);
+
   const scrollToProducts = () => {
     document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -18,6 +21,7 @@ const Hero = () => {
           {/* Logo */}
           <div className="mb-8">
             <img 
+              ref={logoRef}
               src="https://i.ibb.co/QvJjNWL6/path113.png" 
               alt="Adsalt Studios Logo" 
               className="w-32 h-32 mx-auto object-contain"
