@@ -24,16 +24,16 @@ const Hero = () => {
   const animationProgress = Math.min(scrollY / 300, 1);
   const logoScale = 1 - (animationProgress * 0.5); // Scale from 1 to 0.5
   const titleScale = 1 - (animationProgress * 0.75); // Scale from 1 to 0.25
-  const opacity = 1 - (animationProgress * 0.8); // Fade out as scrolling
+  const opacity = 1 - (animationProgress * 1.2); // Fade out completely before header is fully visible
 
   return (
     <section className="min-h-screen flex items-center justify-center px-6 bg-gradient-to-b from-[#D7EAFB] to-[#E9ECEF] pt-20 relative">
-      {/* Morphing elements that will transition to header - only show when scrolling */}
-      {scrollY > 0 && (
+      {/* Morphing elements that will transition to header - only show when scrolling and not fully transitioned */}
+      {scrollY > 0 && opacity > 0 && (
         <div 
           className="fixed top-0 left-0 w-full h-full flex items-center justify-center pointer-events-none z-40"
           style={{
-            opacity: opacity,
+            opacity: Math.max(0, opacity),
             transform: `translateY(${animationProgress * -50}px)`,
           }}
         >
