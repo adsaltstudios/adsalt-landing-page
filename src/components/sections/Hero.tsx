@@ -28,23 +28,50 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center px-6 bg-gradient-to-b from-[#D7EAFB] to-[#E9ECEF] pt-20 relative">
-      {/* Morphing elements that will transition to header */}
-      <div 
-        className="fixed top-0 left-0 w-full h-full flex items-center justify-center pointer-events-none z-40"
-        style={{
-          opacity: opacity,
-          transform: `translateY(${animationProgress * -50}px)`,
-        }}
-      >
-        <div className="text-center">
+      {/* Morphing elements that will transition to header - only show when scrolling */}
+      {scrollY > 0 && (
+        <div 
+          className="fixed top-0 left-0 w-full h-full flex items-center justify-center pointer-events-none z-40"
+          style={{
+            opacity: opacity,
+            transform: `translateY(${animationProgress * -50}px)`,
+          }}
+        >
+          <div className="text-center">
+            {/* Logo */}
+            <div 
+              className="mb-8 transition-all duration-300"
+              style={{
+                transform: `scale(${logoScale})`,
+                transformOrigin: 'center center',
+              }}
+            >
+              <img 
+                src="https://i.ibb.co/QvJjNWL6/path113.png" 
+                alt="Adsalt Studios Logo" 
+                className="w-16 h-16 mx-auto object-contain"
+              />
+            </div>
+            
+            {/* Title */}
+            <h1 
+              className="text-6xl md:text-8xl font-bold text-white mb-6 leading-tight transition-all duration-300"
+              style={{
+                transform: `scale(${titleScale})`,
+                transformOrigin: 'center center',
+              }}
+            >
+              Adsalt Studios
+            </h1>
+          </div>
+        </div>
+      )}
+
+      {/* Main hero content */}
+      <div className="max-w-4xl mx-auto text-center animate-fade-in">
+        <div className="mb-8">
           {/* Logo */}
-          <div 
-            className="mb-8 transition-all duration-300"
-            style={{
-              transform: `scale(${logoScale})`,
-              transformOrigin: 'center center',
-            }}
-          >
+          <div className="mb-8">
             <img 
               src="https://i.ibb.co/QvJjNWL6/path113.png" 
               alt="Adsalt Studios Logo" 
@@ -53,32 +80,7 @@ const Hero = () => {
           </div>
           
           {/* Title */}
-          <h1 
-            className="text-6xl md:text-8xl font-bold text-white mb-6 leading-tight transition-all duration-300"
-            style={{
-              transform: `scale(${titleScale})`,
-              transformOrigin: 'center center',
-            }}
-          >
-            Adsalt Studios
-          </h1>
-        </div>
-      </div>
-
-      {/* Main hero content */}
-      <div className="max-w-4xl mx-auto text-center animate-fade-in">
-        <div className="mb-8">
-          {/* Invisible placeholder to maintain layout */}
-          <div className="mb-8 opacity-0">
-            <img 
-              src="https://i.ibb.co/QvJjNWL6/path113.png" 
-              alt="Adsalt Studios Logo" 
-              className="w-16 h-16 mx-auto object-contain"
-            />
-          </div>
-          
-          {/* Invisible title placeholder */}
-          <h1 className="text-6xl md:text-8xl font-bold text-transparent mb-6 leading-tight">
+          <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 leading-tight">
             Adsalt Studios
           </h1>
           
