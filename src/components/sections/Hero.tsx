@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
@@ -58,22 +59,34 @@ const Hero = () => {
               ref={logoRef}
               src="https://i.ibb.co/QvJjNWL6/path113.png" 
               alt="Adsalt Studios Logo" 
-              className="w-32 h-32 mx-auto object-contain"
+              className={`mx-auto object-contain will-change-transform transition-all duration-600 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+                isHeaderMode 
+                  ? 'w-10 h-10 fixed top-4 left-6 z-50 transform scale-[0.3125] -translate-x-[50vw] -translate-y-[45vh]' 
+                  : 'w-32 h-32'
+              }`}
             />
           </div>
           
           {/* Bold Adsalt Studios title */}
-          <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 leading-tight">
+          <h1 className={`font-bold text-white mb-6 leading-tight will-change-transform transition-all duration-600 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+            isHeaderMode 
+              ? 'text-xl md:text-2xl fixed top-4 left-20 z-50 text-[#305A72] transform -translate-x-[45vw] -translate-y-[45vh]' 
+              : 'text-6xl md:text-8xl'
+          }`}>
             Adsalt Studios
           </h1>
           
-          <p className="text-xl md:text-2xl text-[#1E1E1E] mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className={`text-xl md:text-2xl text-[#1E1E1E] mb-8 max-w-3xl mx-auto leading-relaxed transition-opacity duration-300 ${
+            isHeaderMode ? 'opacity-0' : 'opacity-100'
+          }`}>
             We help small business owners work faster, smarter, and cheaper by 
             building AI tools that cut waste and help them grow.
           </p>
         </div>
         
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+        <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 transition-opacity duration-300 ${
+          isHeaderMode ? 'opacity-0' : 'opacity-100'
+        }`}>
           <Button 
             className="bg-[#305A72] hover:bg-[#D9B6A3] text-white px-8 py-6 text-lg rounded-lg transition-all duration-300 hover:scale-105"
             onClick={scrollToProducts}
@@ -89,7 +102,9 @@ const Hero = () => {
           </Button>
         </div>
 
-        <div className="animate-bounce">
+        <div className={`animate-bounce transition-opacity duration-300 ${
+          isHeaderMode ? 'opacity-0' : 'opacity-100'
+        }`}>
           <ArrowDown 
             className="w-8 h-8 text-[#305A72] mx-auto cursor-pointer opacity-70" 
             onClick={scrollToProducts}
