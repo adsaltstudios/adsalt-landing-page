@@ -2,13 +2,38 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 
-const Hero = () => {
+interface HeroProps {
+  logoScale?: number;
+  headingScale?: number;
+  animationProgress?: number;
+}
+
+const Hero = ({ logoScale = 1, headingScale = 1, animationProgress = 0 }: HeroProps) => {
   const scrollToProducts = () => {
     document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const openCalendly = () => {
     window.open('https://calendly.com/adam-adsalt/30min', '_blank');
+  };
+
+  // Calculate logo position (center to top-left)
+  const logoTranslateX = animationProgress * -50; // Move 50% left from center
+  const logoTranslateY = animationProgress * -45; // Move up to header position
+
+  // Calculate heading position 
+  const headingTranslateX = animationProgress * -25; // Align with logo
+  const headingTranslateY = animationProgress * -20; // Move up slightly
+
+  // Create transform styles
+  const logoStyle = {
+    transform: `scale(${logoScale}) translate3d(${logoTranslateX}%, ${logoTranslateY}%, 0)`,
+    transformOrigin: 'center center',
+  };
+
+  const headingStyle = {
+    transform: `scale(${headingScale}) translate3d(${headingTranslateX}%, ${headingTranslateY}%, 0)`,
+    transformOrigin: 'center left',
   };
 
   return (
@@ -20,12 +45,16 @@ const Hero = () => {
             <img 
               src="https://i.ibb.co/QvJjNWL6/path113.png" 
               alt="Adsalt Studios Logo" 
-              className="w-32 h-32 mx-auto object-contain transition-all duration-[600ms] ease-[cubic-bezier(0.4,0,0.2,1)] will-change-transform"
+              className="w-32 h-32 mx-auto object-contain transition-all duration-[600ms] ease-[cubic-bezier(0.4,0,0.2,1)] will-change-transform motion-reduce:transition-none motion-reduce:transform-none"
+              style={logoStyle}
             />
           </div>
           
           {/* Bold Adsalt Studios title */}
-          <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 leading-tight transition-all duration-[600ms] ease-[cubic-bezier(0.4,0,0.2,1)] will-change-transform">
+          <h1 
+            className="text-6xl md:text-8xl font-bold text-white mb-6 leading-tight transition-all duration-[600ms] ease-[cubic-bezier(0.4,0,0.2,1)] will-change-transform motion-reduce:transition-none motion-reduce:transform-none"
+            style={headingStyle}
+          >
             Adsalt Studios
           </h1>
           

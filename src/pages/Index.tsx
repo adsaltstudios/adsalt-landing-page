@@ -10,12 +10,12 @@ import CTA from "@/components/sections/CTA";
 import Footer from "@/components/sections/Footer";
 
 const Index = () => {
-  const { isHeaderVisible } = useScrollAnimation();
+  const { isHeaderVisible, logoScale, headingScale, animationProgress } = useScrollAnimation();
 
   return (
     <div className="min-h-screen bg-[#E9ECEF]">
       <Header isVisible={isHeaderVisible} />
-      <Hero />
+      <Hero logoScale={logoScale} headingScale={headingScale} animationProgress={animationProgress} />
       <div id="problem">
         <Problem />
       </div>
