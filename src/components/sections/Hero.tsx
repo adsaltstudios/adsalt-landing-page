@@ -15,20 +15,20 @@ const Hero = ({ scrollProgress = 0 }: HeroProps) => {
     window.open('https://calendly.com/adam-adsalt/30min', '_blank');
   };
 
-  // Simple fade calculation
-  const opacity = Math.max(0, 1 - (scrollProgress * 2));
-  const translateY = scrollProgress * 50; // Subtle parallax
+  // Separate fade calculations for logo/title vs other content
+  const logoTitleOpacity = Math.max(0, 1 - (scrollProgress * 2));
+  const logoTitleTranslateY = scrollProgress * 50;
   
-  const fadeStyle = {
-    opacity,
-    transform: `translateY(${translateY}px)`,
+  const logoTitleStyle = {
+    opacity: logoTitleOpacity,
+    transform: `translateY(${logoTitleTranslateY}px)`,
   };
 
   return (
     <section id="hero-section" className="min-h-screen flex items-center justify-center px-6 bg-gradient-to-b from-[#D7EAFB] to-[#E9ECEF] pt-20">
-      <div className="max-w-4xl mx-auto text-center animate-fade-in" style={fadeStyle}>
+      <div className="max-w-4xl mx-auto text-center animate-fade-in">
         <div className="mb-8">
-          <div className="mb-8">
+          <div className="mb-8" style={logoTitleStyle}>
             <img 
               src="https://i.ibb.co/QvJjNWL6/path113.png" 
               alt="Adsalt Studios Logo" 
@@ -36,7 +36,7 @@ const Hero = ({ scrollProgress = 0 }: HeroProps) => {
             />
           </div>
           
-          <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 leading-tight">
+          <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 leading-tight" style={logoTitleStyle}>
             Adsalt Studios
           </h1>
           
