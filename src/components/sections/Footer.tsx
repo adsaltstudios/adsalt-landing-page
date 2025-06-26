@@ -17,7 +17,7 @@ const Footer = () => {
           <p className="text-[#A4B9C7]">Reviving the village, one small business at a time.</p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-8 text-center md:text-left">
+        <div className="grid md:grid-cols-3 gap-8 text-left">
           <div>
             <h4 className="text-white font-semibold mb-3">Contact</h4>
             <p className="text-[#A4B9C7] mb-1">info@adsalt.ai</p>
