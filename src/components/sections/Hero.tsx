@@ -15,45 +15,55 @@ const Hero = ({ scrollProgress = 0 }: HeroProps) => {
     window.open('https://calendly.com/adam-adsalt/30min', '_blank');
   };
 
-  // Incremental fade calculations for different elements
-  const logoOpacity = Math.max(0, 1 - (scrollProgress * 5)); // Fades first (at 20% scroll)
+  // Incremental fade calculations with proper cutoffs
+  const logoOpacity = Math.max(0, 1 - (scrollProgress * 4)); // Fades from 0-25% scroll
+  const logoVisible = logoOpacity > 0.01;
   const logoTranslateY = scrollProgress * 30;
 
-  const titleOpacity = Math.max(0, 1 - ((scrollProgress - 0.2) * 5)); // Fades second (after 20% scroll)
+  const titleOpacity = Math.max(0, 1 - ((scrollProgress - 0.15) * 4)); // Fades from 15-40% scroll
+  const titleVisible = titleOpacity > 0.01;
   const titleTranslateY = scrollProgress * 40;
 
-  const descriptionOpacity = Math.max(0, 1 - ((scrollProgress - 0.4) * 5)); // Fades third (after 40% scroll)
+  const descriptionOpacity = Math.max(0, 1 - ((scrollProgress - 0.3) * 4)); // Fades from 30-55% scroll
+  const descriptionVisible = descriptionOpacity > 0.01;
   const descriptionTranslateY = scrollProgress * 50;
 
-  const buttonsOpacity = Math.max(0, 1 - ((scrollProgress - 0.6) * 5)); // Fades fourth (after 60% scroll)
+  const buttonsOpacity = Math.max(0, 1 - ((scrollProgress - 0.45) * 4)); // Fades from 45-70% scroll
+  const buttonsVisible = buttonsOpacity > 0.01;
   const buttonsTranslateY = scrollProgress * 60;
 
-  const arrowOpacity = Math.max(0, 1 - ((scrollProgress - 0.8) * 5)); // Fades last (after 80% scroll)
+  const arrowOpacity = Math.max(0, 1 - ((scrollProgress - 0.6) * 4)); // Fades from 60-85% scroll
+  const arrowVisible = arrowOpacity > 0.01;
   const arrowTranslateY = scrollProgress * 70;
 
   const logoStyle = {
     opacity: logoOpacity,
     transform: `translateY(${logoTranslateY}px)`,
+    visibility: logoVisible ? 'visible' : 'hidden' as const,
   };
 
   const titleStyle = {
     opacity: titleOpacity,
     transform: `translateY(${titleTranslateY}px)`,
+    visibility: titleVisible ? 'visible' : 'hidden' as const,
   };
 
   const descriptionStyle = {
     opacity: descriptionOpacity,
     transform: `translateY(${descriptionTranslateY}px)`,
+    visibility: descriptionVisible ? 'visible' : 'hidden' as const,
   };
 
   const buttonsStyle = {
     opacity: buttonsOpacity,
     transform: `translateY(${buttonsTranslateY}px)`,
+    visibility: buttonsVisible ? 'visible' : 'hidden' as const,
   };
 
   const arrowStyle = {
     opacity: arrowOpacity,
     transform: `translateY(${arrowTranslateY}px)`,
+    visibility: arrowVisible ? 'visible' : 'hidden' as const,
   };
 
   return (
