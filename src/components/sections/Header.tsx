@@ -24,7 +24,7 @@ const Header = ({ isVisible }: HeaderProps) => {
   return (
     <>
       {isVisible && (
-        <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-[#E9ECEF]">
+        <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#E9ECEF] shadow-sm animate-fade-in">
           <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center gap-3">
