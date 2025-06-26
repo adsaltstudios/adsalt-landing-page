@@ -14,9 +14,11 @@ export const useScrollAnimation = () => {
     
     // Calculate trigger point (20% from top of viewport)
     const triggerPoint = viewportHeight * 0.2;
+    const logoTop = logoRect.top;
     const logoBottom = logoRect.bottom;
     
     console.log('Scroll Animation Debug:', {
+      logoTop,
       logoBottom,
       triggerPoint,
       viewportHeight,
@@ -28,15 +30,21 @@ export const useScrollAnimation = () => {
       }
     });
 
-    // Calculate progress (0 = not started, 1 = fully animated)
+    // Start animation immediately when scrolling begins
+    // Calculate progress based on how far the logo has moved from its initial position
     let progress = 0;
-    if (logoBottom <= triggerPoint) {
-      // Animation should complete over 300px of scroll after trigger for smoother transition
-      const scrollDistance = triggerPoint - logoBottom;
-      progress = Math.min(scrollDistance / 300, 1);
+    
+    // Estimate initial logo position (assuming hero section centers the logo)
+    const estimatedInitialLogoTop = viewportHeight * 0.35; // Rough estimate of centered position
+    
+    if (logoTop < estimatedInitialLogoTop) {
+      // Calculate how far we've scrolled from the initial position
+      const scrolledDistance = estimatedInitialLogoTop - logoTop;
+      // Complete the animation over approximately 400px of scroll
+      progress = Math.min(scrolledDistance / 400, 1);
     }
 
-    console.log('Progress calculated:', progress);
+    console.log('Progress calculated:', progress, 'logoTop:', logoTop, 'estimated initial:', estimatedInitialLogoTop);
 
     setScrollProgress(progress);
     setIsAnimating(progress > 0 && progress < 1);
