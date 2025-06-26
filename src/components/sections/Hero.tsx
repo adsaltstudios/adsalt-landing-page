@@ -59,10 +59,10 @@ const Hero = () => {
               ref={logoRef}
               src="https://i.ibb.co/QvJjNWL6/path113.png" 
               alt="Adsalt Studios Logo" 
-              className={`object-contain will-change-transform transition-all duration-500 ease-out ${
+              className={`mx-auto object-contain will-change-transform transition-all duration-500 ease-out ${
                 isHeaderMode 
-                  ? 'w-10 h-10 fixed top-4 left-6 z-50' 
-                  : 'w-32 h-32 mx-auto'
+                  ? 'w-10 h-10 transform scale-[0.3125] -translate-x-[calc(50vw-7rem)] -translate-y-[calc(50vh-3rem)]' 
+                  : 'w-32 h-32'
               }`}
             />
           </div>
@@ -70,7 +70,7 @@ const Hero = () => {
           {/* Bold Adsalt Studios title */}
           <h1 className={`font-bold mb-6 leading-tight will-change-transform transition-all duration-500 ease-out ${
             isHeaderMode 
-              ? 'text-xl md:text-2xl fixed top-4 left-20 z-50 text-[#305A72]' 
+              ? 'text-xl md:text-2xl text-[#305A72] transform scale-[0.25] -translate-x-[calc(50vw-10rem)] -translate-y-[calc(50vh-3rem)]' 
               : 'text-6xl md:text-8xl text-white mx-auto'
           }`}>
             Adsalt Studios
