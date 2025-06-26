@@ -1,6 +1,6 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Rocket, Users, Search, TrendingUp, UserCheck, Target } from "lucide-react";
 
 const Products = () => {
   const openCalendly = () => {
@@ -13,7 +13,7 @@ const Products = () => {
       description: "Most local businesses get skipped when AI answers customer questions",
       features: ["Formats content for chatbots", "Adds brand mentions monthly", "Builds AI-ready site maps"],
       benefit: "Win back lost traffic and save thousands yearly",
-      icon: "🚀",
+      icon: <Rocket size={24} />,
       price: "Starting at $899"
     },
     {
@@ -21,7 +21,7 @@ const Products = () => {
       description: "Spot patterns in your customer data you've been missing",
       features: ["Spots buying patterns", "Suggests upsells", "Predicts churn risk"],
       benefit: "Turn data into dollars with smarter customer decisions",
-      icon: "👥",
+      icon: <Users size={24} />,
       price: "Starting at $149"
     },
     {
@@ -29,7 +29,7 @@ const Products = () => {
       description: "Find money hiding in your business processes",
       features: ["Identifies cost drains", "Optimizes pricing", "Streamlines workflows"],
       benefit: "Stop bleeding money and boost your bottom line",
-      icon: "🔍",
+      icon: <Search size={24} />,
       price: "Starting at $199"
     },
     {
@@ -37,7 +37,7 @@ const Products = () => {
       description: "Marketing that works while you sleep",
       features: ["Automates follow-ups", "Personalizes outreach", "Tracks what works"],
       benefit: "Scale your reach without burning out your team",
-      icon: "📈",
+      icon: <TrendingUp size={24} />,
       price: "Starting at $249"
     }
   ];
@@ -52,7 +52,7 @@ const Products = () => {
         "Simple guides to reference later",
         "30 days of follow-up support"
       ],
-      icon: "👥",
+      icon: <UserCheck size={24} />,
       price: "Starting at $1,499",
       ctaText: "Schedule a workshop"
     },
@@ -65,7 +65,7 @@ const Products = () => {
         "Custom implementation for your workflow",
         "3 months of ongoing support"
       ],
-      icon: "🎯",
+      icon: <Target size={24} />,
       price: "Starting at $2,999",
       ctaText: "Book on-site training"
     }
@@ -88,7 +88,7 @@ const Products = () => {
             <Card key={index} className="bg-white hover:shadow-lg transition-all duration-300 hover:scale-105">
               <CardHeader>
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-[#D9B6A3] rounded-lg flex items-center justify-center text-2xl">
+                  <div className="w-12 h-12 bg-[#D9B6A3] rounded-lg flex items-center justify-center text-white">
                     {product.icon}
                   </div>
                   <div>
@@ -138,7 +138,7 @@ const Products = () => {
             <Card key={index} className="bg-white hover:shadow-lg transition-all duration-300 hover:scale-105">
               <CardHeader>
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-[#D9B6A3] rounded-lg flex items-center justify-center text-2xl">
+                  <div className="w-12 h-12 bg-[#D9B6A3] rounded-lg flex items-center justify-center text-white">
                     {program.icon}
                   </div>
                   <div>
