@@ -1,12 +1,8 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
-import { useRef, useState, useEffect } from "react";
 
 const Hero = () => {
-  const logoRef = useRef(null);
-  const [isHeaderMode, setIsHeaderMode] = useState(false);
-
   const scrollToProducts = () => {
     document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -15,40 +11,6 @@ const Hero = () => {
     window.open('https://calendly.com/adam-adsalt/30min', '_blank');
   };
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.target === logoRef.current) {
-            // When logo exits the 20% threshold (not intersecting)
-            if (!entry.isIntersecting) {
-              setIsHeaderMode(true);
-              console.log('Header mode:', true);
-            } else {
-              // When logo re-enters the 20% threshold (intersecting)
-              setIsHeaderMode(false);
-              console.log('Header mode:', false);
-            }
-          }
-        });
-      },
-      {
-        rootMargin: '-20% 0px -80% 0px',
-        threshold: 0
-      }
-    );
-
-    if (logoRef.current) {
-      observer.observe(logoRef.current);
-    }
-
-    return () => {
-      if (logoRef.current) {
-        observer.unobserve(logoRef.current);
-      }
-    };
-  }, []);
-
   return (
     <section className="min-h-screen flex items-center justify-center px-6 bg-gradient-to-b from-[#D7EAFB] to-[#E9ECEF] pt-20">
       <div className="max-w-4xl mx-auto text-center animate-fade-in">
@@ -56,37 +18,24 @@ const Hero = () => {
           {/* Logo */}
           <div className="mb-8">
             <img 
-              ref={logoRef}
               src="https://i.ibb.co/QvJjNWL6/path113.png" 
               alt="Adsalt Studios Logo" 
-              className={`mx-auto object-contain will-change-transform transition-all duration-500 ease-out ${
-                isHeaderMode 
-                  ? 'w-10 h-10 transform scale-[0.3125] -translate-x-[calc(50vw-7rem)] -translate-y-[calc(50vh-3rem)]' 
-                  : 'w-32 h-32'
-              }`}
+              className="w-32 h-32 mx-auto object-contain"
             />
           </div>
           
           {/* Bold Adsalt Studios title */}
-          <h1 className={`font-bold mb-6 leading-tight will-change-transform transition-all duration-500 ease-out ${
-            isHeaderMode 
-              ? 'text-xl md:text-2xl text-[#305A72] transform scale-[0.25] -translate-x-[calc(50vw-10rem)] -translate-y-[calc(50vh-3rem)]' 
-              : 'text-6xl md:text-8xl text-white mx-auto'
-          }`}>
+          <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 leading-tight">
             Adsalt Studios
           </h1>
           
-          <p className={`text-xl md:text-2xl text-[#1E1E1E] mb-8 max-w-3xl mx-auto leading-relaxed transition-opacity duration-300 ${
-            isHeaderMode ? 'opacity-0' : 'opacity-100'
-          }`}>
+          <p className="text-xl md:text-2xl text-[#1E1E1E] mb-8 max-w-3xl mx-auto leading-relaxed">
             We help small business owners work faster, smarter, and cheaper by 
             building AI tools that cut waste and help them grow.
           </p>
         </div>
         
-        <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 transition-opacity duration-300 ${
-          isHeaderMode ? 'opacity-0' : 'opacity-100'
-        }`}>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
           <Button 
             className="bg-[#305A72] hover:bg-[#D9B6A3] text-white px-8 py-6 text-lg rounded-lg transition-all duration-300 hover:scale-105"
             onClick={scrollToProducts}
@@ -102,9 +51,7 @@ const Hero = () => {
           </Button>
         </div>
 
-        <div className={`animate-bounce transition-opacity duration-300 ${
-          isHeaderMode ? 'opacity-0' : 'opacity-100'
-        }`}>
+        <div className="animate-bounce">
           <ArrowDown 
             className="w-8 h-8 text-[#305A72] mx-auto cursor-pointer opacity-70" 
             onClick={scrollToProducts}
