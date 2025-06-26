@@ -1,10 +1,10 @@
-
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 const Hero = () => {
   const logoRef = useRef(null);
+  const [isHeaderMode, setIsHeaderMode] = useState(false);
 
   const scrollToProducts = () => {
     document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
@@ -13,6 +13,40 @@ const Hero = () => {
   const openCalendly = () => {
     window.open('https://calendly.com/adam-adsalt/30min', '_blank');
   };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target === logoRef.current) {
+            // When logo exits the 20% threshold (not intersecting)
+            if (!entry.isIntersecting) {
+              setIsHeaderMode(true);
+              console.log('Header mode:', true);
+            } else {
+              // When logo re-enters the 20% threshold (intersecting)
+              setIsHeaderMode(false);
+              console.log('Header mode:', false);
+            }
+          }
+        });
+      },
+      {
+        rootMargin: '-20% 0px -80% 0px',
+        threshold: 0
+      }
+    );
+
+    if (logoRef.current) {
+      observer.observe(logoRef.current);
+    }
+
+    return () => {
+      if (logoRef.current) {
+        observer.unobserve(logoRef.current);
+      }
+    };
+  }, []);
 
   return (
     <section className="min-h-screen flex items-center justify-center px-6 bg-gradient-to-b from-[#D7EAFB] to-[#E9ECEF] pt-20">
