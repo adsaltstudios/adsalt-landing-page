@@ -31,9 +31,9 @@ export const useScrollAnimation = () => {
     // Calculate progress (0 = not started, 1 = fully animated)
     let progress = 0;
     if (logoBottom <= triggerPoint) {
-      // Animation should complete over 200px of scroll after trigger
+      // Animation should complete over 300px of scroll after trigger for smoother transition
       const scrollDistance = triggerPoint - logoBottom;
-      progress = Math.min(scrollDistance / 200, 1);
+      progress = Math.min(scrollDistance / 300, 1);
     }
 
     console.log('Progress calculated:', progress);
