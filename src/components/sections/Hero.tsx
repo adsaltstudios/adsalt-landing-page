@@ -1,8 +1,11 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Hero = () => {
+  const { scrollProgress, isAnimating, logoRef } = useScrollAnimation();
+
   const scrollToProducts = () => {
     document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -15,8 +18,8 @@ const Hero = () => {
     <section className="min-h-screen flex items-center justify-center px-6 bg-gradient-to-b from-[#D7EAFB] to-[#E9ECEF] pt-20">
       <div className="max-w-4xl mx-auto text-center animate-fade-in">
         <div className="mb-8">
-          {/* Logo */}
-          <div className="mb-8">
+          {/* Logo with ref for scroll detection */}
+          <div className="mb-8" ref={logoRef}>
             <img 
               src="https://i.ibb.co/QvJjNWL6/path113.png" 
               alt="Adsalt Studios Logo" 
@@ -33,6 +36,12 @@ const Hero = () => {
             We help small business owners work faster, smarter, and cheaper by 
             building AI tools that cut waste and help them grow.
           </p>
+        </div>
+        
+        {/* Debug info - will be removed in later phases */}
+        <div className="fixed top-20 right-4 bg-black/80 text-white p-2 rounded text-sm z-50">
+          <div>Progress: {(scrollProgress * 100).toFixed(1)}%</div>
+          <div>Animating: {isAnimating ? 'Yes' : 'No'}</div>
         </div>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
