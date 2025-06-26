@@ -1,4 +1,5 @@
 
+import { useState } from "react";
 import Header from "@/components/sections/Header";
 import Hero from "@/components/sections/Hero";
 import Problem from "@/components/sections/Problem";
@@ -9,9 +10,11 @@ import CTA from "@/components/sections/CTA";
 import Footer from "@/components/sections/Footer";
 
 const Index = () => {
+  const [isHeaderVisible, setIsHeaderVisible] = useState(false);
+
   return (
     <div className="min-h-screen bg-[#E9ECEF]">
-      <Header />
+      <Header isVisible={isHeaderVisible} />
       <Hero />
       <div id="problem">
         <Problem />

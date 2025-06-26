@@ -12,7 +12,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 bg-gradient-to-b from-[#D7EAFB] to-[#E9ECEF] pt-20">
+    <section id="hero-section" className="min-h-screen flex items-center justify-center px-6 bg-gradient-to-b from-[#D7EAFB] to-[#E9ECEF] pt-20">
       <div className="max-w-4xl mx-auto text-center animate-fade-in">
         <div className="mb-8">
           {/* Logo */}
@@ -20,12 +20,12 @@ const Hero = () => {
             <img 
               src="https://i.ibb.co/QvJjNWL6/path113.png" 
               alt="Adsalt Studios Logo" 
-              className="w-32 h-32 mx-auto object-contain"
+              className="w-32 h-32 mx-auto object-contain transition-all duration-[600ms] ease-[cubic-bezier(0.4,0,0.2,1)] will-change-transform"
             />
           </div>
           
           {/* Bold Adsalt Studios title */}
-          <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 leading-tight">
+          <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 leading-tight transition-all duration-[600ms] ease-[cubic-bezier(0.4,0,0.2,1)] will-change-transform">
             Adsalt Studios
           </h1>
           
