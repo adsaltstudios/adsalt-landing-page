@@ -15,27 +15,27 @@ const Hero = ({ scrollProgress = 0 }: HeroProps) => {
     window.open('https://calendly.com/adam-adsalt/30min', '_blank');
   };
 
-  // Add 30% delay to all animations
-  const animationDelay = 0.3;
+  // Add 20% delay to all animations
+  const animationDelay = 0.2;
 
-  // Incremental fade calculations with 30% delay
-  const logoOpacity = Math.max(0, 1 - ((scrollProgress - animationDelay) * 4)); // Fades from 30-55% scroll
+  // Incremental fade calculations with 20% delay and better spacing
+  const logoOpacity = Math.max(0, 1 - ((scrollProgress - animationDelay) * 4)); // Fades from 20-45% scroll
   const logoVisible = logoOpacity > 0.01;
   const logoTranslateY = scrollProgress * 30;
 
-  const titleOpacity = Math.max(0, 1 - ((scrollProgress - (animationDelay + 0.15)) * 4)); // Fades from 45-70% scroll
+  const titleOpacity = Math.max(0, 1 - ((scrollProgress - (animationDelay + 0.1)) * 4)); // Fades from 30-55% scroll
   const titleVisible = titleOpacity > 0.01;
   const titleTranslateY = scrollProgress * 40;
 
-  const descriptionOpacity = Math.max(0, 1 - ((scrollProgress - (animationDelay + 0.3)) * 4)); // Fades from 60-85% scroll
+  const descriptionOpacity = Math.max(0, 1 - ((scrollProgress - (animationDelay + 0.2)) * 4)); // Fades from 40-65% scroll
   const descriptionVisible = descriptionOpacity > 0.01;
   const descriptionTranslateY = scrollProgress * 50;
 
-  const buttonsOpacity = Math.max(0, 1 - ((scrollProgress - (animationDelay + 0.45)) * 4)); // Fades from 75-100% scroll
+  const buttonsOpacity = Math.max(0, 1 - ((scrollProgress - (animationDelay + 0.3)) * 4)); // Fades from 50-75% scroll
   const buttonsVisible = buttonsOpacity > 0.01;
   const buttonsTranslateY = scrollProgress * 60;
 
-  const arrowOpacity = Math.max(0, 1 - ((scrollProgress - (animationDelay + 0.6)) * 4)); // Fades from 90-115% scroll
+  const arrowOpacity = Math.max(0, 1 - ((scrollProgress - (animationDelay + 0.45)) * 4)); // Fades from 65-90% scroll
   const arrowVisible = arrowOpacity > 0.01;
   const arrowTranslateY = scrollProgress * 70;
 
