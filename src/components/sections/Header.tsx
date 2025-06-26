@@ -6,10 +6,9 @@ import { useState } from "react";
 
 interface HeaderProps {
   isVisible: boolean;
-  animationProgress?: number;
 }
 
-const Header = ({ isVisible, animationProgress = 0 }: HeaderProps) => {
+const Header = ({ isVisible }: HeaderProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const scrollToSection = (sectionId: string) => {
@@ -24,7 +23,7 @@ const Header = ({ isVisible, animationProgress = 0 }: HeaderProps) => {
 
   return (
     <>
-      {isVisible && animationProgress > 0.8 && (
+      {isVisible && (
         <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-[#E9ECEF]">
           <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
             {/* Logo */}
