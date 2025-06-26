@@ -22,11 +22,11 @@ const Header = () => {
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <div className="w-16 h-16 flex items-center justify-center">
+          <div className="w-8 h-8 flex items-center justify-center">
             <img 
               src="https://i.ibb.co/QvJjNWL6/path113.png" 
               alt="Adsalt Studios Logo" 
-              className="w-16 h-16 object-contain"
+              className="w-full h-full object-contain"
             />
           </div>
           <span className="text-[#305A72] font-bold text-xl">Adsalt Studios</span>
