@@ -20,7 +20,7 @@ const Hero = () => {
             <img 
               src="https://i.ibb.co/QvJjNWL6/path113.png" 
               alt="Adsalt Studios Logo" 
-              className="w-16 h-16 mx-auto object-contain"
+              className="w-32 h-32 mx-auto object-contain"
             />
           </div>
           
