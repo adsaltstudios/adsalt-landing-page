@@ -24,7 +24,7 @@ const SocialProof = () => {
   ];
 
   return (
-    <section className="py-20 px-6 bg-white">
+    <section className="py-20 px-6 bg-[#E9ECEF]">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-[#305A72] mb-6">
