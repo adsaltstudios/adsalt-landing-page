@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -100,4 +101,16 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Add these performance optimizations */
+#hero-section {
+  transform: translateZ(0); /* Force hardware acceleration */
+  backface-visibility: hidden;
+}
+
+#hero-section img,
+#hero-section h1 {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
 }
