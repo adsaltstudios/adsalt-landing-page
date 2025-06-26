@@ -39,31 +39,31 @@ const Hero = ({ scrollProgress = 0 }: HeroProps) => {
   const logoStyle = {
     opacity: logoOpacity,
     transform: `translateY(${logoTranslateY}px)`,
-    visibility: logoVisible ? 'visible' : 'hidden' as const,
+    visibility: logoVisible ? ('visible' as const) : ('hidden' as const),
   };
 
   const titleStyle = {
     opacity: titleOpacity,
     transform: `translateY(${titleTranslateY}px)`,
-    visibility: titleVisible ? 'visible' : 'hidden' as const,
+    visibility: titleVisible ? ('visible' as const) : ('hidden' as const),
   };
 
   const descriptionStyle = {
     opacity: descriptionOpacity,
     transform: `translateY(${descriptionTranslateY}px)`,
-    visibility: descriptionVisible ? 'visible' : 'hidden' as const,
+    visibility: descriptionVisible ? ('visible' as const) : ('hidden' as const),
   };
 
   const buttonsStyle = {
     opacity: buttonsOpacity,
     transform: `translateY(${buttonsTranslateY}px)`,
-    visibility: buttonsVisible ? 'visible' : 'hidden' as const,
+    visibility: buttonsVisible ? ('visible' as const) : ('hidden' as const),
   };
 
   const arrowStyle = {
     opacity: arrowOpacity,
     transform: `translateY(${arrowTranslateY}px)`,
-    visibility: arrowVisible ? 'visible' : 'hidden' as const,
+    visibility: arrowVisible ? ('visible' as const) : ('hidden' as const),
   };
 
   return (
