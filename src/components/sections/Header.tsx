@@ -20,8 +20,8 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-[#E9ECEF]">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo */}
-        <div className="flex items-center gap-3">
+        {/* Logo - Hidden but maintaining space */}
+        <div className="flex items-center gap-3 opacity-0">
           <div className="w-8 h-8 flex items-center justify-center">
             <img 
               src="https://i.ibb.co/QvJjNWL6/path113.png" 
@@ -32,8 +32,8 @@ const Header = () => {
           <span className="text-[#305A72] font-bold text-xl">Adsalt Studios</span>
         </div>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
+        {/* Desktop Navigation - Hidden but maintaining space */}
+        <nav className="hidden md:flex items-center gap-8 opacity-0">
           <button 
             onClick={() => scrollToSection('problem')}
             className="text-[#305A72] hover:text-[#D9B6A3] transition-colors"
@@ -60,43 +60,45 @@ const Header = () => {
           </Button>
         </nav>
 
-        {/* Mobile Navigation */}
-        <Sheet open={isOpen} onOpenChange={setIsOpen}>
-          <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="md:hidden text-[#305A72]">
-              <Menu className="w-6 h-6" />
-              <span className="sr-only">Toggle navigation menu</span>
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="right" className="w-[300px] bg-white">
-            <nav className="flex flex-col gap-6 mt-8">
-              <button 
-                onClick={() => scrollToSection('problem')}
-                className="text-[#305A72] hover:text-[#D9B6A3] transition-colors text-left text-lg"
-              >
-                Why AI?
-              </button>
-              <button 
-                onClick={() => scrollToSection('products')}
-                className="text-[#305A72] hover:text-[#D9B6A3] transition-colors text-left text-lg"
-              >
-                What We Build
-              </button>
-              <button 
-                onClick={() => scrollToSection('proof')}
-                className="text-[#305A72] hover:text-[#D9B6A3] transition-colors text-left text-lg"
-              >
-                Results
-              </button>
-              <Button 
-                className="bg-[#D9B6A3] hover:bg-[#305A72] text-white px-6 py-3 rounded-lg transition-all duration-300 mt-4"
-                onClick={openCalendly}
-              >
-                Let's Talk
+        {/* Mobile Navigation - Hidden but maintaining space */}
+        <div className="md:hidden opacity-0">
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="text-[#305A72]">
+                <Menu className="w-6 h-6" />
+                <span className="sr-only">Toggle navigation menu</span>
               </Button>
-            </nav>
-          </SheetContent>
-        </Sheet>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[300px] bg-white">
+              <nav className="flex flex-col gap-6 mt-8">
+                <button 
+                  onClick={() => scrollToSection('problem')}
+                  className="text-[#305A72] hover:text-[#D9B6A3] transition-colors text-left text-lg"
+                >
+                  Why AI?
+                </button>
+                <button 
+                  onClick={() => scrollToSection('products')}
+                  className="text-[#305A72] hover:text-[#D9B6A3] transition-colors text-left text-lg"
+                >
+                  What We Build
+                </button>
+                <button 
+                  onClick={() => scrollToSection('proof')}
+                  className="text-[#305A72] hover:text-[#D9B6A3] transition-colors text-left text-lg"
+                >
+                  Results
+                </button>
+                <Button 
+                  className="bg-[#D9B6A3] hover:bg-[#305A72] text-white px-6 py-3 rounded-lg transition-all duration-300 mt-4"
+                  onClick={openCalendly}
+                >
+                  Let's Talk
+                </Button>
+              </nav>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </header>
   );
