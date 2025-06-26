@@ -1,15 +1,8 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
-import { useMemo } from 'react';
 
-interface HeroProps {
-  logoScale?: number;
-  headingScale?: number;
-  animationProgress?: number;
-}
-
-const Hero = ({ logoScale = 1, headingScale = 1, animationProgress = 0 }: HeroProps) => {
+const Hero = () => {
   const scrollToProducts = () => {
     document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -17,36 +10,6 @@ const Hero = ({ logoScale = 1, headingScale = 1, animationProgress = 0 }: HeroPr
   const openCalendly = () => {
     window.open('https://calendly.com/adam-adsalt/30min', '_blank');
   };
-
-  // Simplified transform calculations - no DOM queries
-  const transforms = useMemo(() => {
-    // Simple percentage-based transforms that work on all screen sizes
-    const progress = animationProgress;
-    
-    // Logo moves from center to top-left (header position)
-    const logoTranslateX = progress * -45; // Move 45vw left
-    const logoTranslateY = progress * -40; // Move 40vh up
-    
-    // Heading moves to align with logo position
-    const headingTranslateX = progress * -35; // Move 35vw left
-    const headingTranslateY = progress * -35; // Move 35vh up
-    
-    // Fade out as animation progresses
-    const opacity = Math.max(0, 1 - (progress * 1.5));
-    
-    return {
-      logoStyle: {
-        transform: `translate3d(${logoTranslateX}vw, ${logoTranslateY}vh, 0) scale(${logoScale})`,
-        opacity,
-        willChange: progress > 0 && progress < 1 ? 'transform, opacity' : 'auto',
-      },
-      headingStyle: {
-        transform: `translate3d(${headingTranslateX}vw, ${headingTranslateY}vh, 0) scale(${headingScale})`,
-        opacity,
-        willChange: progress > 0 && progress < 1 ? 'transform, opacity' : 'auto',
-      }
-    };
-  }, [logoScale, headingScale, animationProgress]);
 
   return (
     <section id="hero-section" className="min-h-screen flex items-center justify-center px-6 bg-gradient-to-b from-[#D7EAFB] to-[#E9ECEF] pt-20">
@@ -57,16 +20,12 @@ const Hero = ({ logoScale = 1, headingScale = 1, animationProgress = 0 }: HeroPr
             <img 
               src="https://i.ibb.co/QvJjNWL6/path113.png" 
               alt="Adsalt Studios Logo" 
-              className="w-32 h-32 mx-auto object-contain"
-              style={transforms.logoStyle}
+              className="w-32 h-32 mx-auto object-contain transition-all duration-[600ms] ease-[cubic-bezier(0.4,0,0.2,1)] will-change-transform"
             />
           </div>
           
           {/* Bold Adsalt Studios title */}
-          <h1 
-            className="text-6xl md:text-8xl font-bold text-white mb-6 leading-tight"
-            style={transforms.headingStyle}
-          >
+          <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 leading-tight transition-all duration-[600ms] ease-[cubic-bezier(0.4,0,0.2,1)] will-change-transform">
             Adsalt Studios
           </h1>
           

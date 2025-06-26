@@ -16,20 +16,6 @@ export const useScrollAnimation = (): ScrollAnimationState => {
     animationProgress: 0
   });
 
-  // Throttled update function to reduce stuttering
-  const throttledUpdate = useCallback((progress: number) => {
-    // Only update if change is significant (reduces stuttering)
-    if (Math.abs(progress - state.animationProgress) > 0.01) {
-      setState(prev => ({
-        ...prev,
-        animationProgress: progress,
-        logoScale: Math.max(0.3125, 1 - progress),
-        headingScale: Math.max(window.innerWidth >= 768 ? 0.25 : 0.333, 1 - progress),
-        isHeaderVisible: progress > 0.7
-      }));
-    }
-  }, [state.animationProgress]);
-
   const updateScrollState = useCallback(() => {
     const heroElement = document.querySelector('#hero-section .w-32');
     if (!heroElement) return;
@@ -42,8 +28,22 @@ export const useScrollAnimation = (): ScrollAnimationState => {
     const elementBottom = rect.bottom;
     const progress = Math.max(0, Math.min(1, (triggerPoint - elementBottom) / (triggerPoint + rect.height)));
     
-    throttledUpdate(progress);
-  }, [throttledUpdate]);
+    // Calculate scales
+    const logoScale = Math.max(0.3125, 1 - progress); // 0.3125 = 40px/128px
+    const isMobile = window.innerWidth < 768;
+    const headingScale = isMobile 
+      ? Math.max(0.333, 1 - progress) // 0.333 = 20px/60px for mobile
+      : Math.max(0.25, 1 - progress);  // 0.25 = 24px/96px for desktop
+    
+    const isHeaderVisible = progress > 0.5;
+
+    setState({
+      isHeaderVisible,
+      logoScale,
+      headingScale,
+      animationProgress: progress
+    });
+  }, []);
 
   useEffect(() => {
     // Check for reduced motion preference
