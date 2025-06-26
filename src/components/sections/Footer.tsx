@@ -1,4 +1,5 @@
 
+
 const Footer = () => {
   return (
     <footer className="py-12 px-6 bg-[#1E1E1E]">
@@ -30,7 +31,7 @@ const Footer = () => {
           </div>
           
           <div>
-            <h4 className="text-white font-semibold mb-3">Values</h4>
+            <h4 className="text-white font-semibold mb-3">Our Values</h4>
             <p className="text-[#A4B9C7] mb-1">Keep it simple</p>
             <p className="text-[#A4B9C7] mb-1">People come first</p>
             <p className="text-[#A4B9C7]">Move with purpose</p>
@@ -48,3 +49,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
