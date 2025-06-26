@@ -7,7 +7,7 @@ const About = () => {
   };
 
   return (
-    <section className="py-20 px-6 bg-[#E9ECEF]">
+    <section className="py-20 px-6 bg-[#A4B9C7]">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-5xl font-bold text-[#305A72] mb-6">
