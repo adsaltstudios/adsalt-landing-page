@@ -4,20 +4,30 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 export const useScrollAnimation = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const observerRef = useRef<IntersectionObserver | null>(null);
   const logoRef = useRef<HTMLDivElement | null>(null);
 
-  const updateScrollProgress = useCallback((entries: IntersectionObserverEntry[]) => {
-    const entry = entries[0];
-    if (!entry) return;
+  const updateScrollProgress = useCallback(() => {
+    if (!logoRef.current) return;
 
-    const { boundingClientRect, rootBounds } = entry;
-    if (!rootBounds) return;
-
-    // Calculate when logo bottom edge reaches 20% from top of viewport
-    const triggerPoint = rootBounds.height * 0.2;
-    const logoBottom = boundingClientRect.bottom;
+    const logoRect = logoRef.current.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
     
+    // Calculate trigger point (20% from top of viewport)
+    const triggerPoint = viewportHeight * 0.2;
+    const logoBottom = logoRect.bottom;
+    
+    console.log('Scroll Animation Debug:', {
+      logoBottom,
+      triggerPoint,
+      viewportHeight,
+      logoRect: {
+        top: logoRect.top,
+        bottom: logoRect.bottom,
+        left: logoRect.left,
+        right: logoRect.right
+      }
+    });
+
     // Calculate progress (0 = not started, 1 = fully animated)
     let progress = 0;
     if (logoBottom <= triggerPoint) {
@@ -26,36 +36,25 @@ export const useScrollAnimation = () => {
       progress = Math.min(scrollDistance / 200, 1);
     }
 
-    console.log('Scroll Animation Debug:', {
-      logoBottom,
-      triggerPoint,
-      progress,
-      isIntersecting: entry.isIntersecting
-    });
+    console.log('Progress calculated:', progress);
 
     setScrollProgress(progress);
     setIsAnimating(progress > 0 && progress < 1);
   }, []);
 
   useEffect(() => {
-    if (!logoRef.current) return;
+    // Add scroll event listener
+    const handleScroll = () => {
+      requestAnimationFrame(updateScrollProgress);
+    };
 
-    // Create intersection observer to track logo position
-    observerRef.current = new IntersectionObserver(
-      updateScrollProgress,
-      {
-        root: null,
-        rootMargin: '0px',
-        threshold: Array.from({ length: 101 }, (_, i) => i / 100) // Track every 1% change
-      }
-    );
-
-    observerRef.current.observe(logoRef.current);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    // Initial calculation
+    updateScrollProgress();
 
     return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-      }
+      window.removeEventListener('scroll', handleScroll);
     };
   }, [updateScrollProgress]);
 
