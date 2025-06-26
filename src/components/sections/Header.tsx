@@ -1,27 +1,49 @@
-
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
-    setIsOpen(false); // Close mobile menu after navigation
+    setIsOpen(false);
   };
 
   const openCalendly = () => {
     window.open('https://calendly.com/adam-adsalt/30min', '_blank');
-    setIsOpen(false); // Close mobile menu after action
+    setIsOpen(false);
   };
 
+  // Calculate animation progress
+  const animationProgress = Math.min(scrollY / 300, 1);
+  const headerOpacity = animationProgress;
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-[#E9ECEF]">
+    <header 
+      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm border-b border-[#E9ECEF] transition-all duration-300"
+      style={{
+        backgroundColor: `rgba(255, 255, 255, ${0.95 * headerOpacity})`,
+        borderBottomColor: `rgba(233, 236, 239, ${headerOpacity})`,
+      }}
+    >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-3">
+        <div 
+          className="flex items-center gap-3 transition-all duration-300"
+          style={{
+            opacity: headerOpacity,
+            transform: `translateY(${(1 - headerOpacity) * 20}px)`,
+          }}
+        >
           <div className="w-8 h-8 flex items-center justify-center">
             <img 
               src="https://i.ibb.co/QvJjNWL6/path113.png" 
@@ -33,7 +55,13 @@ const Header = () => {
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav 
+          className="hidden md:flex items-center gap-8 transition-all duration-300"
+          style={{
+            opacity: headerOpacity,
+            transform: `translateY(${(1 - headerOpacity) * 20}px)`,
+          }}
+        >
           <button 
             onClick={() => scrollToSection('problem')}
             className="text-[#305A72] hover:text-[#D9B6A3] transition-colors"
@@ -63,12 +91,21 @@ const Header = () => {
         {/* Mobile Navigation */}
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="md:hidden text-[#305A72]">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="md:hidden text-[#305A72] transition-all duration-300"
+              style={{
+                opacity: headerOpacity,
+                transform: `translateY(${(1 - headerOpacity) * 20}px)`,
+              }}
+            >
               <Menu className="w-6 h-6" />
               <span className="sr-only">Toggle navigation menu</span>
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="w-[300px] bg-white">
+            
             <nav className="flex flex-col gap-6 mt-8">
               <button 
                 onClick={() => scrollToSection('problem')}
