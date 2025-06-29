@@ -1,58 +1,58 @@
+import { Sparkles, Users } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
-
-const About = () => {
-  const scrollToProducts = () => {
-    const productsSection = document.getElementById('products');
-    if (productsSection) {
-      productsSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
+export default function About() {
   return (
-    <section id="about" className="py-20 px-6 bg-white">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-[#305A72] mb-6">
+    <section
+      id="about"
+      className="py-12 px-4 sm:px-6 bg-[#E9ECEF] flex justify-center"
+      aria-labelledby="about-heading"
+    >
+      <div className="w-full max-w-xl bg-white rounded-2xl shadow-lg p-6 sm:p-10 flex flex-col items-center text-center">
+        {/* Brand Icon */}
+        <div className="mb-4">
+          <div className="w-16 h-16 rounded-full bg-[#D7EAFB] flex items-center justify-center mb-2">
+            <Users className="text-[#305A72]" size={32} />
+          </div>
+          <h2
+            id="about-heading"
+            className="text-3xl sm:text-4xl font-bold text-[#305A72] mb-2"
+          >
             Why We're Here
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          <div className="space-y-6">
-            <p className="text-lg text-[#1E1E1E] leading-relaxed">
-              We build AI tools that handle the busywork so small business owners can focus on their customers.
-            </p>
-            <p className="text-lg text-[#1E1E1E] leading-relaxed">
-              We miss real villages—places where the hardware store owner remembers your project and neighbors catch up at the coffee shop. We can't turn back time, but we can help you spend yours better.
-            </p>
-            <p className="text-lg text-[#1E1E1E] leading-relaxed">
-              Instead of drowning in paperwork and chasing invoices, our tools catch costly mistakes and automate tedious tasks. No tech headaches, just results. Businesses using our solutions regularly save thousands and reclaim hours each week.
-            </p>
-          </div>
-          
-          <div className="space-y-6">
-            <p className="text-lg text-[#1E1E1E] leading-relaxed">
-              Our team worked at Google, Amazon, and JPMorgan Chase. But we'd rather help the family hardware store and corner café that's been serving the community for decades.
-            </p>
-            <p className="text-lg text-[#1E1E1E] leading-relaxed font-semibold">
-              We're Adsalt Studios, reviving the village one small business at a time.
-            </p>
-            
-            <div className="pt-6">
-              <Button 
-                variant="outline"
-                className="border-[#305A72] text-[#305A72] hover:bg-[#305A72] hover:text-white"
-                onClick={scrollToProducts}
-              >
-                See How We Help
-              </Button>
-            </div>
-          </div>
+        {/* Mission */}
+        <p className="text-lg text-[#1E1E1E] mb-4 font-medium">
+          We help small business owners work faster, smarter, and cheaper by building AI tools that cut waste and help them grow.
+        </p>
+
+        {/* Vision */}
+        <div className="flex items-center justify-center gap-2 mb-4">
+          <Sparkles className="text-[#D9B6A3]" size={20} />
+          <span className="text-[#305A72] font-semibold">Revive the village.</span>
         </div>
+        <p className="text-base text-[#7D9BA6] mb-6">
+          We want small businesses to become the heart of their communities again, using smart tools to build a better way to live and work.
+        </p>
+
+        {/* Values */}
+        <div className="mb-6">
+          <h3 className="text-lg font-semibold text-[#305A72] mb-2">Our Values</h3>
+          <ul className="space-y-1 text-[#1E1E1E]">
+            <li>• <span className="font-medium">Keep it simple</span></li>
+            <li>• <span className="font-medium">People come first</span></li>
+            <li>• <span className="font-medium">Move with meaning</span></li>
+          </ul>
+        </div>
+
+        {/* CTA */}
+        <a
+          href="#products"
+          className="inline-block w-full sm:w-auto bg-[#D9B6A3] hover:bg-[#305A72] text-white font-semibold py-3 px-8 rounded-full transition-all duration-200 text-lg focus:outline-none focus:ring-2 focus:ring-[#305A72] focus:ring-offset-2"
+        >
+          See How We Help
+        </a>
       </div>
     </section>
   );
-};
-
-export default About;
+}

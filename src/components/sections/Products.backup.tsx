@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Rocket, Users, Search, TrendingUp, UserCheck, Target } from "lucide-react";
+import { Rocket, Users, Search, TrendingUp, UserCheck, Target, Sparkles } from "lucide-react";
 
 const Products = () => {
   const openCalendly = () => {
