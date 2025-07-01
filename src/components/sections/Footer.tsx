@@ -30,8 +30,8 @@ const Footer = () => {
           
           <div className="text-left">
             <h4 className="text-white font-semibold mb-3 leading-tight">Our Values</h4>
-            <p className="text-[#A4B9C7] mb-1 text-base leading-relaxed focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]" tabIndex={0}>Keep it simple</p>
             <p className="text-[#A4B9C7] mb-1 text-base leading-relaxed focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]" tabIndex={0}>People come first</p>
+            <p className="text-[#A4B9C7] mb-1 text-base leading-relaxed focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]" tabIndex={0}>Keep it simple</p>
             <p className="text-[#A4B9C7] text-base leading-relaxed focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]" tabIndex={0}>Move with purpose</p>
           </div>
         </div>

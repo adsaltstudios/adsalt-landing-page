@@ -3,18 +3,18 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 const SocialProof = () => {
   const testimonials = [
     {
-      quote: "Excellent content and presentation. I left knowing exactly how to put Gen AI to work.",
-      author: "Maria, Regional Ops Lead",
+      quote: "Excellent prompt engineering and AI tool content and presentation. I left knowing exactly how to put Gen AI to work.",
+      author: "Engagement Lead, Amazon",
+      business: "Gen-AI Innovation Workshop",
+    },
+    {
+      quote: "The Team AI Workshop was great - I'll definitely use Gen-AI tools more and more effectively after today. I'm going to bring Adsalt back for Custom AI Training across my team!",
+      author: "Marketing Manager, Amazon",
       business: "Gen-AI Business-Writing Workshop",
     },
     {
-      quote: "This was a great session—I'll definitely use Gen-AI tools more and more effectively after today.",
-      author: "James, Small Business Owner",
-      business: "Gen-AI Business-Writing Workshop",
-    },
-    {
-      quote: "A task that used to take me two days now takes about two hours with Adsalt's AI workflow.",
-      author: "Samantha, Graduate Student",
+      quote: "A task that used to take me two days now takes about two hours with my AI workflow.",
+      author: "Kendall, Graduate Student",
       business: "1-on-1 AI Workflow Session",
     },
   ];

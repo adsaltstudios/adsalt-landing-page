@@ -1,34 +1,38 @@
 import React, { useState, useRef } from 'react';
 import { Rocket, Users, Brain, TrendingUp } from 'lucide-react';
 
-  const products = [
-    {
+const products = [
+  {
     name: 'AI Rank Booster',
     tagline: 'Get found when customers ask AI.',
     description: `Boost your business's visibility in AI-powered search results.`,
     icon: <Rocket size={48} className="text-[#D9B6A3]" />,
-    details: 'AI Rank Booster helps your business appear in more AI-driven search results, bringing you more customers with less effort.'
+    details: 'AI Rank Booster helps your business appear in more AI-driven search results, bringing you more customers with less effort.',
+    price: '$899',
   },
   {
     name: 'Onsite Guide',
     tagline: 'Instant answers for everyone, anytime.',
     description: 'Reduce emails and boost conversions with 24/7 AI support.',
     icon: <Users size={48} className="text-[#305A72]" />,
-    details: 'Onsite Guide provides instant, AI-powered answers to your customers and team, right on your website.'
+    details: 'Onsite Guide provides instant, AI-powered answers to your customers and team, right on your website.',
+    price: '$149',
   },
   {
     name: 'Customer Insight Engine',
     tagline: 'See patterns. Make smarter moves.',
     description: 'Unlock actionable insights from your customer data.',
     icon: <Brain size={48} className="text-[#A4B9C7]" />,
-    details: 'Customer Insight Engine analyzes your data to spot trends, upsell opportunities, and churn risks.'
+    details: 'Customer Insight Engine analyzes your data to spot trends, upsell opportunities, and churn risks.',
+    price: '$199',
   },
   {
     name: 'Growth Autopilot',
     tagline: 'Marketing that never sleeps.',
     description: 'Automate your outreach and track what works.',
     icon: <TrendingUp size={48} className="text-[#305A72]" />,
-    details: 'Growth Autopilot automates follow-ups, personalizes outreach, and tracks your marketing performance.'
+    details: 'Growth Autopilot automates follow-ups, personalizes outreach, and tracks your marketing performance.',
+    price: '$249',
   },
 ];
 
@@ -99,10 +103,11 @@ const Products = () => {
                   </div>
               <h3 className="text-2xl font-semibold text-[#305A72] mb-2">{product.name}</h3>
               <p className="text-[#7D9BA6] font-medium mb-3 leading-relaxed">{product.tagline}</p>
-              <p className="text-[#1E1E1E] mb-6 leading-relaxed flex-grow">{product.description}</p>
+              <p className="text-[#1E1E1E] mb-2 leading-relaxed flex-grow">{product.description}</p>
+              <p className="text-[#305A72] font-bold mb-4">{product.price}</p>
               <button
-                className="bg-transparent text-[#305A72] font-bold text-lg px-8 py-3 rounded-full hover:underline hover:text-[#7D9BA6] transition mt-auto focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]"
-                onClick={() => setModalIndex(idx)}
+                className="bg-[#305A72] hover:bg-[#7D9BA6] text-white font-bold text-lg px-8 py-3 rounded-full shadow-md transition mt-auto focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]"
+                onClick={() => window.open('https://calendly.com/adam-adsalt/30min', '_blank')}
                 tabIndex={0}
               >
                 Learn more
@@ -167,10 +172,11 @@ const Products = () => {
                   </div>
                   <h3 className="text-2xl font-semibold text-[#305A72] mb-2">{product.name}</h3>
                   <p className="text-[#7D9BA6] font-medium mb-3 text-sm leading-relaxed">{product.tagline}</p>
-                  <p className="text-[#1E1E1E] mb-6 text-sm leading-relaxed flex-grow">{product.description}</p>
+                  <p className="text-[#1E1E1E] mb-2 text-sm leading-relaxed flex-grow">{product.description}</p>
+                  <p className="text-[#305A72] font-bold mb-4">{product.price}</p>
                   <button
-                    className="bg-transparent text-[#305A72] font-bold text-lg px-8 py-3 rounded-full hover:underline hover:text-[#7D9BA6] transition mt-auto focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]"
-                    onClick={() => setModalIndex(idx)}
+                    className="bg-[#305A72] hover:bg-[#7D9BA6] text-white font-bold text-lg px-8 py-3 rounded-full shadow-md transition mt-auto focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]"
+                    onClick={() => window.open('https://calendly.com/adam-adsalt/30min', '_blank')}
                     tabIndex={0}
                   >
                     Learn more
@@ -249,7 +255,7 @@ const Products = () => {
               <li>• Reference materials</li>
               <li>• 30 days of support</li>
             </ul>
-            <button className="w-full bg-[#305A72] hover:bg-[#7D9BA6] text-white font-bold text-lg px-8 py-3 rounded-full shadow-md transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]">Schedule a workshop</button>
+            <button className="w-full bg-white text-[#305A72] font-bold text-lg px-8 py-3 rounded-full border-2 border-[#305A72] hover:bg-[#D7EAFB] hover:text-[#305A72] shadow-md transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]">Schedule a workshop</button>
           </div>
           {/* Custom AI Training */}
           <div className="bg-[#305A72] text-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center border border-[#E9ECEF] relative">
@@ -261,7 +267,7 @@ const Products = () => {
                 <Rocket size={32} className="text-white" aria-hidden="true" />
               </span>
             </div>
-            <h3 className="text-2xl font-semibold text-[#305A72] mb-2">Custom AI Training</h3>
+            <h3 className="text-2xl font-semibold text-white mb-2">Custom AI Training</h3>
             <p className="text-white/80 font-medium mb-2 uppercase tracking-wide">On-Site Training</p>
             <div className="text-3xl font-bold mb-4">$2,999</div>
             <ul className="text-left space-y-2 mb-6">
@@ -270,7 +276,12 @@ const Products = () => {
               <li>• Build custom AI agents</li>
               <li>• 3 months of support</li>
             </ul>
-            <button className="w-full bg-white text-[#305A72] font-bold text-lg px-8 py-3 rounded-full border-2 border-[#305A72] hover:bg-[#D7EAFB] hover:text-[#305A72] shadow-md transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]">Book on-site training</button>
+            <button
+              className="w-full bg-white text-[#305A72] font-bold text-lg px-8 py-3 rounded-full border-2 border-[#305A72] hover:bg-[#D7EAFB] hover:text-[#305A72] shadow-md transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]"
+              onClick={() => window.open('https://calendly.com/adam-adsalt/30min', '_blank')}
+            >
+              Book on-site training
+            </button>
           </div>
         </div>
       </div>

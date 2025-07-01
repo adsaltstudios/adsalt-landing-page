@@ -3,15 +3,15 @@ import { Sparkles, Users } from 'lucide-react';
 const credibilityQuotes = [
   {
     quote: "Adam is exceptional at cutting through ambiguity—senior customer leaders trust him with their most ambitious goals.",
-    context: "Enterprise stakeholder, AWS peer review",
+    context: "Enterprise stakeholder, JP Morgan Chase",
   },
   {
     quote: "Adam excels at building trust and delivering results for his customers.",
-    context: "Manager feedback, AWS ProServe",
+    context: "Manager feedback, Amazon",
   },
   {
     quote: "He delivers real results that wow the customer.",
-    context: "Peer feedback, AWS ProServe",
+    context: "Peer feedback, Amazon",
   },
 ];
 
@@ -41,12 +41,12 @@ const AboutSection = () => {
           <h3 className="text-2xl font-semibold text-[#305A72] mb-4">Our Values</h3>
           <ul className="space-y-4">
             <li className="flex items-center justify-center gap-3 text-lg font-semibold text-[#305A72]">
-              <Sparkles className="w-6 h-6 text-[#7D9BA6]" aria-hidden="true" />
-              Keep it simple
-            </li>
-            <li className="flex items-center justify-center gap-3 text-lg font-semibold text-[#305A72]">
               <Users className="w-6 h-6 text-[#7D9BA6]" aria-hidden="true" />
               People come first
+            </li>
+            <li className="flex items-center justify-center gap-3 text-lg font-semibold text-[#305A72]">
+              <Sparkles className="w-6 h-6 text-[#7D9BA6]" aria-hidden="true" />
+              Keep it simple
             </li>
             <li className="flex items-center justify-center gap-3 text-lg font-semibold text-[#305A72]">
               <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-[#7D9BA6]" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
