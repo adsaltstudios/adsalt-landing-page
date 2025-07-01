@@ -1,12 +1,18 @@
-
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
+import React, { useEffect, useState } from 'react';
 
 interface HeroProps {
   scrollProgress?: number;
 }
 
 const Hero = ({ scrollProgress = 0 }: HeroProps) => {
+  const [contentVisible, setContentVisible] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setContentVisible(true), 100);
+  }, []);
+
   const scrollToProducts = () => {
     document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -70,22 +76,29 @@ const Hero = ({ scrollProgress = 0 }: HeroProps) => {
   };
 
   return (
-    <section id="hero-section" className="min-h-screen flex items-center justify-center px-6 bg-gradient-to-b from-[#D7EAFB] to-[#E9ECEF] pt-20">
-      <div className="max-w-4xl mx-auto text-center animate-fade-in">
+    <section id="hero-section" className="min-h-screen flex items-center justify-center px-6 pt-20 relative overflow-hidden">
+      {/* Animated gradient background */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#D7EAFB] to-[#E9ECEF]" />
+      <div className={`max-w-4xl mx-auto text-center transition-all duration-700 ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="mb-8">
-          <div className="mb-8" style={logoStyle}>
+          <div
+            className="mb-8 relative inline-block transition-transform duration-300 hover:scale-105 focus:scale-105"
+            style={logoStyle}
+            tabIndex={0}
+            aria-label="Adsalt Studios Logo"
+          >
             <img 
               src="https://i.ibb.co/QvJjNWL6/path113.png" 
-              alt="Adsalt Studios Logo" 
-              className="w-32 h-32 mx-auto object-contain"
+              alt="Adsalt Studios Logo: stylized salt shaker icon" 
+              className="w-32 h-32 mx-auto object-contain" 
             />
           </div>
           
-          <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 leading-tight" style={titleStyle}>
+          <h1 className="text-6xl md:text-8xl font-bold text-[#305A72] mb-6 leading-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3] tracking-tight animate-hero-fade-in" style={titleStyle} tabIndex={0}>
             Adsalt Studios
           </h1>
           
-          <p className="text-xl md:text-2xl text-[#1E1E1E] mb-8 max-w-3xl mx-auto leading-relaxed" style={descriptionStyle}>
+          <p className="text-xl md:text-2xl text-[#7D9BA6] mb-8 max-w-3xl mx-auto leading-relaxed focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3] tracking-wide animate-hero-fade-in" style={descriptionStyle} tabIndex={0}>
             We help small business owners work faster, smarter, and cheaper by 
             building AI tools that cut waste and help them grow.
           </p>
@@ -93,14 +106,13 @@ const Hero = ({ scrollProgress = 0 }: HeroProps) => {
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12" style={buttonsStyle}>
           <Button 
-            className="bg-[#305A72] hover:bg-[#D9B6A3] text-white px-8 py-6 text-lg rounded-lg transition-all duration-300 hover:scale-105"
+            className="bg-[#305A72] hover:bg-[#7D9BA6] text-white font-bold text-lg px-8 py-3 rounded-full shadow-md transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3] hover:scale-105 active:scale-97 hover:shadow-xl active:shadow focus:scale-105 focus:shadow-xl"
             onClick={scrollToProducts}
           >
             Start Building Smarter →
           </Button>
           <Button 
-            variant="ghost" 
-            className="text-[#305A72] hover:text-[#D9B6A3] text-lg px-8 py-6 hover:underline"
+            className="bg-transparent text-[#305A72] font-bold text-lg px-8 py-3 rounded-full hover:underline hover:text-[#7D9BA6] transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]"
             onClick={openCalendly}
           >
             Schedule a chat

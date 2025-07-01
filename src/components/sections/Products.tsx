@@ -1,557 +1,281 @@
-import React, { useState } from 'react';
-import { Rocket, Users, Search, TrendingUp, ChevronRight, Sparkles, Brain, BarChart3, Zap, Shield, Clock, MessageSquare } from 'lucide-react';
-
-const ProductsRedesign = () => {
-  const [hoveredProduct, setHoveredProduct] = useState(null);
+import React, { useState, useRef } from 'react';
+import { Rocket, Users, Brain, TrendingUp } from 'lucide-react';
 
   const products = [
     {
-      id: 'chat-optimizer',
-      name: 'AI Rank Booster',
-      tagline: 'Get found when customers ask AI.',
-      price: 'From $899',
-      icon: Rocket,
-      color: '#D9B6A3',
-      features: ['AI-ready content', 'Brand visibility', 'Smart site maps'],
-      visual: 'chat',
-      image: 'https://i.ibb.co/KcSchhd3/20250627-2010-Centered-Caf-Search-remix-01jyt18pzzerbvdxrn125056yc.png'
-    },
-    {
-      id: 'onsite-guide',
-      name: 'Onsite Guide',
-      tagline: 'Instant answers for everyone, anytime.',
-      price: 'From $749',
-      icon: Users,
-      color: '#E9ECEF',
-      features: ['80% fewer emails', 'Boost conversions', '24/7 support', 'Multi-platform'],
-      visual: 'guide'
-    },
-    {
-      id: 'insight-engine',
-      name: 'Customer Insight Engine',
-      tagline: 'See patterns. Make smarter moves.',
-      price: 'From $149/mo',
-      icon: Brain,
-      color: '#A4B9C7',
-      features: ['Pattern detection', 'Smart upsells', 'Churn alerts'],
-      visual: 'insights'
-    },
-    {
-      id: 'growth-autopilot',
-      name: 'Growth Autopilot',
-      tagline: 'Marketing that never sleeps.',
-      price: 'From $249/mo',
-      icon: TrendingUp,
-      color: '#305A72',
-      features: ['Auto follow-ups', 'Personal touch', 'Performance tracking'],
-      visual: 'growth'
-    },
-    {
-      id: 'team-workshop',
-      name: 'Team AI Workshop',
-      tagline: 'Get your whole team AI-ready.',
-      price: 'Starting at $1,499',
-      icon: Users,
-      color: '#7D9BA6',
-      features: ['Live training', 'Hands-on practice', 'Reference guides', '30 days support'],
-      visual: 'workshop',
-      cta: 'Schedule a workshop'
-    },
-    {
-      id: 'custom-training',
-      name: 'Custom AI Training',
-      tagline: 'AI solutions built for your business.',
-      price: 'Starting at $2,999',
-      icon: Zap,
-      color: '#305A72',
-      features: ['On-site training', 'Real problems', 'Build agents', '3 months support'],
-      visual: 'training',
-      cta: 'Book on-site training'
-    }
-  ];
+    name: 'AI Rank Booster',
+    tagline: 'Get found when customers ask AI.',
+    description: `Boost your business's visibility in AI-powered search results.`,
+    icon: <Rocket size={48} className="text-[#D9B6A3]" />,
+    details: 'AI Rank Booster helps your business appear in more AI-driven search results, bringing you more customers with less effort.'
+  },
+  {
+    name: 'Onsite Guide',
+    tagline: 'Instant answers for everyone, anytime.',
+    description: 'Reduce emails and boost conversions with 24/7 AI support.',
+    icon: <Users size={48} className="text-[#305A72]" />,
+    details: 'Onsite Guide provides instant, AI-powered answers to your customers and team, right on your website.'
+  },
+  {
+    name: 'Customer Insight Engine',
+    tagline: 'See patterns. Make smarter moves.',
+    description: 'Unlock actionable insights from your customer data.',
+    icon: <Brain size={48} className="text-[#A4B9C7]" />,
+    details: 'Customer Insight Engine analyzes your data to spot trends, upsell opportunities, and churn risks.'
+  },
+  {
+    name: 'Growth Autopilot',
+    tagline: 'Marketing that never sleeps.',
+    description: 'Automate your outreach and track what works.',
+    icon: <TrendingUp size={48} className="text-[#305A72]" />,
+    details: 'Growth Autopilot automates follow-ups, personalizes outreach, and tracks your marketing performance.'
+  },
+];
 
-  const ProductVisual = ({ type, color, image }) => {
-    const baseClasses = "w-full h-64 rounded-2xl flex items-center justify-center relative overflow-hidden transition-all duration-700";
-    
-    if (image) {
-      return (
-        <div className="w-full h-64 rounded-2xl flex items-center justify-center bg-[#F8FAFC] overflow-hidden">
-          <img
-            src={image}
-            alt="AI Rank Booster hero"
-            className="object-contain w-full h-full"
-            style={{ maxHeight: 256, borderRadius: '1rem' }}
-          />
-        </div>
-      );
-    }
-    
-    switch(type) {
-      case 'chat':
-        return (
-          <div className={baseClasses} style={{ background: `linear-gradient(135deg, ${color}15 0%, ${color}30 100%)` }}>
-            <div className="absolute inset-0 opacity-10">
-              {[...Array(5)].map((_, i) => (
-                <div
-                  key={i}
-                  className="absolute animate-pulse"
-                  style={{
-                    left: `${20 + i * 15}%`,
-                    top: `${30 + i * 10}%`,
-                    width: '120px',
-                    height: '40px',
-                    background: color,
-                    borderRadius: '20px',
-                    transform: `rotate(${-15 + i * 5}deg)`,
-                    opacity: 0.3 - i * 0.05
-                  }}
-                />
-              ))}
-            </div>
-            <Rocket size={80} color={color} className="relative z-10 animate-bounce" />
-          </div>
-        );
-      
-      case 'guide':
-        return (
-          <div className={baseClasses} style={{ background: `linear-gradient(135deg, ${color}15 0%, #305A7230 100%)` }}>
-            <div className="relative w-full h-full flex items-center justify-center">
-              {/* Chat bubbles animation */}
-              <div className="absolute inset-0">
-                <div className="absolute top-8 left-12 w-32 h-12 bg-[#305A72] rounded-2xl rounded-bl-none opacity-20 animate-pulse" />
-                <div className="absolute top-24 right-12 w-28 h-12 bg-[#A4B9C7] rounded-2xl rounded-br-none opacity-20 animate-pulse animation-delay-1000" />
-                <div className="absolute bottom-20 left-16 w-36 h-12 bg-[#305A72] rounded-2xl rounded-bl-none opacity-20 animate-pulse animation-delay-2000" />
-                <div className="absolute bottom-8 right-8 w-24 h-12 bg-[#A4B9C7] rounded-2xl rounded-br-none opacity-20 animate-pulse" />
-              </div>
-              {/* Central icon with ripple effect */}
-              <div className="relative">
-                <div className="absolute inset-0 rounded-full bg-[#305A72] opacity-20 animate-ping" />
-                <div className="absolute inset-0 rounded-full bg-[#305A72] opacity-10 animate-ping animation-delay-1000" />
-                <Users size={60} color="#305A72" className="relative z-10" />
-              </div>
-            </div>
-          </div>
-        );
-      
-      case 'insights':
-        return (
-          <div className={baseClasses} style={{ background: `linear-gradient(135deg, ${color}15 0%, ${color}30 100%)` }}>
-            <div className="grid grid-cols-3 gap-4 p-8">
-              {[...Array(9)].map((_, i) => (
-                <div
-                  key={i}
-                  className="w-12 h-12 rounded-lg animate-pulse"
-                  style={{
-                    background: color,
-                    opacity: 0.2 + (i % 3) * 0.2,
-                    animationDelay: `${i * 0.1}s`
-                  }}
-                />
-              ))}
-            </div>
-            <Brain size={60} color={color} className="absolute bottom-4 right-4" />
-          </div>
-        );
-      
-      case 'growth':
-        return (
-          <div className={baseClasses} style={{ background: `linear-gradient(135deg, ${color}15 0%, ${color}30 100%)` }}>
-            <div className="relative w-full h-full flex items-center justify-center">
-              <div className="absolute bottom-0 left-0 right-0 h-32">
-                {[...Array(7)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="absolute bottom-0 bg-opacity-30 animate-pulse"
-                    style={{
-                      left: `${i * 14}%`,
-                      width: '12%',
-                      height: `${30 + i * 10}%`,
-                      background: color,
-                      borderRadius: '8px 8px 0 0',
-                      animationDelay: `${i * 0.2}s`
-                    }}
-                  />
-                ))}
-              </div>
-              <TrendingUp size={80} color={color} className="relative z-10" />
-            </div>
-          </div>
-        );
-      
-      case 'workshop':
-        return (
-          <div className={baseClasses} style={{ background: `linear-gradient(135deg, ${color}15 0%, ${color}30 100%)` }}>
-            <div className="relative w-full h-full flex items-center justify-center">
-              {/* Virtual meeting grid */}
-              <div className="grid grid-cols-3 gap-3 p-8">
-                {[...Array(6)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="relative"
-                  >
-                    <div
-                      className="w-16 h-16 rounded-lg flex items-center justify-center animate-pulse"
-                      style={{
-                        background: `linear-gradient(135deg, ${color}40, ${color}20)`,
-                        animationDelay: `${i * 0.2}s`
-                      }}
-                    >
-                      <Users size={24} color={color} opacity={0.6} />
-                    </div>
-                    {i === 0 && (
-                      <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-pulse" />
-                    )}
-                  </div>
-                ))}
-              </div>
-              <MessageSquare size={40} color={color} className="absolute bottom-6 right-6 animate-bounce" />
-            </div>
-          </div>
-        );
-      
-      case 'training':
-        return (
-          <div className={baseClasses} style={{ background: `linear-gradient(135deg, ${color}15 0%, ${color}30 100%)` }}>
-            <div className="relative w-full h-full flex items-center justify-center">
-              {/* Building blocks representing custom AI */}
-              <div className="relative">
-                {[...Array(3)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="absolute animate-pulse"
-                    style={{
-                      bottom: `${i * 35}px`,
-                      left: '50%',
-                      transform: 'translateX(-50%)',
-                      width: `${100 - i * 20}px`,
-                      height: '30px',
-                      background: color,
-                      opacity: 0.3 + i * 0.1,
-                      borderRadius: '8px',
-                      animationDelay: `${i * 0.3}s`
-                    }}
-                  />
-                ))}
-                <Zap size={60} color={color} className="relative z-10 animate-pulse" />
-              </div>
-              {/* Floating elements */}
-              <div className="absolute top-8 left-8 w-4 h-4 rounded-full animate-bounce" style={{ background: color, opacity: 0.5 }} />
-              <div className="absolute top-12 right-12 w-3 h-3 rounded-full animate-bounce animation-delay-1000" style={{ background: color, opacity: 0.4 }} />
-              <div className="absolute bottom-16 left-16 w-5 h-5 rounded-full animate-bounce animation-delay-2000" style={{ background: color, opacity: 0.3 }} />
-            </div>
-          </div>
-        );
-      
-      default:
-        return null;
+const CARD_WIDTH = 320;
+const CARD_GAP = 24;
+
+const Products = () => {
+  const [modalIndex, setModalIndex] = useState(-1); // -1 means closed
+  const [active, setActive] = useState(0);
+  const touchStartX = useRef(null);
+  const touchDeltaX = useRef(0);
+
+  // Carousel navigation for mobile
+  const prev = () => setActive((i) => (i === 0 ? products.length - 1 : i - 1));
+  const next = () => setActive((i) => (i === products.length - 1 ? 0 : i + 1));
+
+  // Touch swipe handlers
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchDeltaX.current = 0;
+  };
+  const handleTouchMove = (e) => {
+    if (touchStartX.current !== null) {
+      touchDeltaX.current = e.touches[0].clientX - touchStartX.current;
     }
   };
+  const handleTouchEnd = () => {
+    if (touchDeltaX.current > 50) prev();
+    else if (touchDeltaX.current < -50) next();
+    touchStartX.current = null;
+    touchDeltaX.current = 0;
+  };
 
-  const FeatureIndicators = ({ features, color }) => (
-    <div className="flex gap-2 mt-4">
-      {features.map((_, index) => (
-        <div
-          key={index}
-          className="w-2 h-2 rounded-full"
-          style={{ backgroundColor: color, opacity: 0.6 }}
-        />
-      ))}
-    </div>
-  );
+  // Fixed offset calculation - simple left translation based on active index
+  const offset = active * (CARD_WIDTH + CARD_GAP);
 
   return (
-    <section id="products" className="py-20 px-6 bg-white">
-      <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold text-[#305A72] mb-6">
-            Explore our AI toolkit.
+    <section id="products" className="py-20 px-4 bg-[#D7EAFB]">
+      {/* AI Toolkit Header/Subheader */}
+      <div className="text-center mb-12">
+        <h2 className="text-3xl md:text-5xl font-bold text-[#305A72] mb-4 leading-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3] tracking-tight animate-hero-fade-in" tabIndex={0}>
+            AI tools built for real businesses
           </h2>
-          <p className="text-xl text-[#7D9BA6] max-w-3xl mx-auto">
-            Simple tools that save you time and make you money.
-          </p>
+        <p className="text-xl md:text-2xl text-[#7D9BA6] mb-8 font-medium">No complicated setup. No tech degree required. Just simple tools and training that save you time and make you money.</p>
         </div>
 
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-          {products.slice(0, 4).map((product) => (
-            <div
-              key={product.id}
-              className="group cursor-pointer"
-              onMouseEnter={() => setHoveredProduct(product.id)}
-              onMouseLeave={() => setHoveredProduct(null)}
-            >
-              {/* Product Visual */}
-              <div className="mb-8 transform transition-transform duration-500 group-hover:scale-[1.02]">
-                <ProductVisual type={product.visual} color={product.color} image={product.image} />
-              </div>
-
-              {/* Product Info */}
-              <div className="text-center space-y-4">
-                <h3 className="text-2xl font-semibold text-[#1E1E1E]">
-                  {product.name}
-                </h3>
-                <p className="text-lg text-[#7D9BA6]">
-                  {product.tagline}
-                </p>
-                <p className="text-2xl font-medium text-[#305A72]">
-                  {product.price}
-                </p>
-
-                <FeatureIndicators features={product.features} color={product.color} />
-
-                {/* CTAs */}
-                <div className="flex gap-4 justify-center pt-4">
-                  <button 
-                    className="text-[#305A72] hover:text-[#D9B6A3] transition-colors flex items-center gap-1 font-medium"
-                  >
-                    Learn more
-                    <ChevronRight size={16} />
-                  </button>
-                  <button 
-                    className="px-6 py-2 rounded-full text-white font-medium transition-all duration-300 hover:scale-105"
-                    style={{ backgroundColor: product.color }}
-                  >
-                    {product.cta || 'Get started'}
-                  </button>
-                </div>
-
-                {/* Hover Feature Preview */}
-                <div className={`overflow-hidden transition-all duration-500 ${
-                  hoveredProduct === product.id ? 'max-h-24 opacity-100' : 'max-h-0 opacity-0'
-                }`}>
-                  <div className="pt-4 flex gap-6 justify-center">
-                    {product.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center gap-2 text-sm text-[#7D9BA6]">
-                        <Sparkles size={14} />
-                        <span>{feature}</span>
-                      </div>
-                    ))}
+      {/* Desktop 2x2 grid */}
+      <div className="hidden md:grid grid-cols-2 grid-rows-2 gap-8 max-w-4xl mx-auto">
+        {products.map((product, idx) => (
+          <div
+            key={product.name}
+            className="bg-white rounded-3xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-[1.02] min-h-[360px] border border-gray-100 hover:border-[#D9B6A3]/30 relative overflow-hidden group cursor-pointer"
+            style={{
+              boxShadow: '0 8px 32px -8px rgba(48, 90, 114, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.05)'
+            }}
+            tabIndex={0}
+            aria-label={product.name}
+          >
+            {/* Subtle gradient background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-gray-50/30 rounded-3xl opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+            
+            {/* Content */}
+            <div className="relative z-10 flex flex-col items-center text-center h-full">
+              <div className="mb-6 flex items-center justify-center p-4 rounded-2xl bg-gradient-to-br from-white to-gray-50 shadow-inner border border-white/60">
+                <span className="motion-safe:transition-transform motion-safe:duration-300 group-hover:-rotate-8 group-hover:scale-110 group-hover:text-[#D9B6A3] group-focus:-rotate-8 group-focus:scale-110 group-focus:text-[#D9B6A3]">
+                  {React.cloneElement(product.icon, { size: 32, 'aria-hidden': true })}
+                </span>
+                  </div>
+              <h3 className="text-2xl font-semibold text-[#305A72] mb-2">{product.name}</h3>
+              <p className="text-[#7D9BA6] font-medium mb-3 leading-relaxed">{product.tagline}</p>
+              <p className="text-[#1E1E1E] mb-6 leading-relaxed flex-grow">{product.description}</p>
+              <button
+                className="bg-transparent text-[#305A72] font-bold text-lg px-8 py-3 rounded-full hover:underline hover:text-[#7D9BA6] transition mt-auto focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]"
+                onClick={() => setModalIndex(idx)}
+                tabIndex={0}
+              >
+                Learn more
+              </button>
                   </div>
                 </div>
-              </div>
-            </div>
           ))}
         </div>
 
-        {/* Training Section Header */}
-        <div className="text-center mt-24 mb-16">
-          <h3 className="text-3xl md:text-4xl font-bold text-[#305A72] mb-4">
-            Learn AI with your team.
-          </h3>
-          <p className="text-lg text-[#7D9BA6] max-w-2xl mx-auto">
-            Hands-on training that gets your whole team using AI confidently.
-          </p>
-        </div>
-
-        {/* Training Products - Comparison Layout */}
-        <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Team AI Workshop */}
-            <div className="group">
-              <div className="relative bg-white border-2 border-[#E9ECEF] rounded-2xl p-8 hover:border-[#A4B9C7] transition-all duration-300 h-full">
-                {/* Header */}
-                <div className="text-center mb-8">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-[#D7EAFB] rounded-2xl mb-4">
-                    <Users size={32} className="text-[#305A72]" />
+      {/* Mobile carousel */}
+      <div className="md:hidden flex flex-col items-center justify-center min-h-[420px] relative w-full">
+        {/* Arrows */}
+        <button
+          aria-label="Previous"
+          onClick={prev}
+          className="z-20 bg-white/95 backdrop-blur-sm rounded-full border border-gray-200/60 p-3 transition-all duration-200 absolute left-4 top-1/2 -translate-y-1/2 hover:bg-white hover:border-[#D9B6A3]/30 hover:scale-105 shadow-lg"
+        >
+          <svg width="20" height="20" fill="none" stroke="#305A72" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+        </button>
+        <button
+          aria-label="Next"
+          onClick={next}
+          className="z-20 bg-white/95 backdrop-blur-sm rounded-full border border-gray-200/60 p-3 transition-all duration-200 absolute right-4 top-1/2 -translate-y-1/2 hover:bg-white hover:border-[#D9B6A3]/30 hover:scale-105 shadow-lg"
+        >
+          <svg width="20" height="20" fill="none" stroke="#305A72" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
+        </button>
+        
+        {/* Carousel viewport - Fixed container */}
+        <div className="overflow-hidden w-full max-w-[320px] mx-auto relative">
+          <div
+            className="flex transition-transform duration-300 ease-out"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            style={{
+              transform: `translateX(-${offset}px)`,
+              width: `${products.length * (CARD_WIDTH + CARD_GAP)}px`,
+            }}
+          >
+            {products.map((product, idx) => (
+              <div
+                key={product.name}
+                className="bg-white rounded-3xl p-8 flex flex-col items-center text-center min-h-[360px] transition-all duration-300 ease-out border border-gray-100 hover:border-[#D9B6A3]/30 relative overflow-hidden group"
+                style={{ 
+                  width: `${CARD_WIDTH}px`,
+                  marginRight: idx < products.length - 1 ? `${CARD_GAP}px` : '0px',
+                  flexShrink: 0,
+                  boxShadow: '0 8px 32px -8px rgba(48, 90, 114, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.05)'
+                }}
+                tabIndex={0}
+                aria-label={product.name}
+              >
+                {/* Subtle gradient background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-gray-50/30 rounded-3xl opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+                
+                {/* Content */}
+                <div className="relative z-10 flex flex-col items-center text-center h-full">
+                  <div className="mb-6 flex items-center justify-center p-4 rounded-2xl bg-gradient-to-br from-white to-gray-50 shadow-inner border border-white/60">
+                    <span className="motion-safe:transition-transform motion-safe:duration-300 group-hover:-rotate-8 group-hover:scale-110 group-hover:text-[#D9B6A3] group-focus:-rotate-8 group-focus:scale-110 group-focus:text-[#D9B6A3]">
+                      {React.cloneElement(product.icon, { size: 32, 'aria-hidden': true })}
+                    </span>
                   </div>
-                  <h4 className="text-2xl font-semibold text-[#1E1E1E] mb-2">Team AI Workshop</h4>
-                  <p className="text-sm text-[#7D9BA6] uppercase tracking-wide mb-4">Virtual Training</p>
-                  <div className="text-3xl font-bold text-[#305A72]">$1,499</div>
-                </div>
-
-                {/* Features List */}
-                <div className="space-y-4 mb-8">
-                  <div className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-[#D7EAFB] flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Sparkles size={12} className="text-[#305A72]" />
-                    </div>
-                    <div>
-                      <p className="font-medium text-[#1E1E1E]">Live online sessions</p>
-                      <p className="text-sm text-[#7D9BA6]">Interactive workshops with your whole team</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-[#D7EAFB] flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Sparkles size={12} className="text-[#305A72]" />
-                    </div>
-                    <div>
-                      <p className="font-medium text-[#1E1E1E]">Hands-on practice</p>
-                      <p className="text-sm text-[#7D9BA6]">Work with AI tools during the session</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-[#D7EAFB] flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Sparkles size={12} className="text-[#305A72]" />
-                    </div>
-                    <div>
-                      <p className="font-medium text-[#1E1E1E]">Reference materials</p>
-                      <p className="text-sm text-[#7D9BA6]">Guides and templates to keep</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-[#D7EAFB] flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Clock size={12} className="text-[#305A72]" />
-                    </div>
-                    <div>
-                      <p className="font-medium text-[#1E1E1E]">30 days of support</p>
-                      <p className="text-sm text-[#7D9BA6]">Get help as you implement</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* CTA */}
-                <button className="w-full bg-[#7D9BA6] hover:bg-[#305A72] text-white py-3 rounded-full font-medium transition-all duration-300 hover:scale-[1.02]">
-                  Schedule a workshop
-                </button>
-              </div>
-            </div>
-
-            {/* Custom AI Training */}
-            <div className="group relative">
-              {/* Popular Badge */}
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
-                <div className="bg-[#D9B6A3] text-[#1E1E1E] text-xs font-semibold px-4 py-1 rounded-full">
-                  MOST POPULAR
+                  <h3 className="text-2xl font-semibold text-[#305A72] mb-2">{product.name}</h3>
+                  <p className="text-[#7D9BA6] font-medium mb-3 text-sm leading-relaxed">{product.tagline}</p>
+                  <p className="text-[#1E1E1E] mb-6 text-sm leading-relaxed flex-grow">{product.description}</p>
+                  <button
+                    className="bg-transparent text-[#305A72] font-bold text-lg px-8 py-3 rounded-full hover:underline hover:text-[#7D9BA6] transition mt-auto focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]"
+                    onClick={() => setModalIndex(idx)}
+                    tabIndex={0}
+                  >
+                    Learn more
+                  </button>
                 </div>
               </div>
-              
-              <div className="relative bg-[#305A72] text-white rounded-2xl p-8 h-full">
-                {/* Header */}
-                <div className="text-center mb-8">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-white/20 rounded-2xl mb-4">
-                    <Zap size={32} className="text-white" />
-                  </div>
-                  <h4 className="text-2xl font-semibold mb-2">Custom AI Training</h4>
-                  <p className="text-sm text-white/80 uppercase tracking-wide mb-4">On-Site Training</p>
-                  <div className="text-3xl font-bold">$2,999</div>
-                </div>
-
-                {/* Features List */}
-                <div className="space-y-4 mb-8">
-                  <div className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Sparkles size={12} className="text-white" />
-                    </div>
-                    <div>
-                      <p className="font-medium">In-person at your office</p>
-                      <p className="text-sm text-white/80">Tailored to your team's needs</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Sparkles size={12} className="text-white" />
-                    </div>
-                    <div>
-                      <p className="font-medium">Solve real problems</p>
-                      <p className="text-sm text-white/80">Work on your actual use cases</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Sparkles size={12} className="text-white" />
-                    </div>
-                    <div>
-                      <p className="font-medium">Build custom AI agents</p>
-                      <p className="text-sm text-white/80">Create tools specific to your business</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Shield size={12} className="text-white" />
-                    </div>
-                    <div>
-                      <p className="font-medium">3 months of support</p>
-                      <p className="text-sm text-white/80">Ongoing help as you scale</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* CTA */}
-                <button className="w-full bg-white text-[#305A72] py-3 rounded-full font-medium transition-all duration-300 hover:scale-[1.02] hover:bg-[#D9B6A3] hover:text-white">
-                  Book on-site training
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Comparison Note */}
-          <div className="text-center mt-12">
-            <p className="text-[#7D9BA6]">
-              Not sure which training is right for your team? 
-              <button className="text-[#305A72] hover:text-[#D9B6A3] font-medium ml-2 underline underline-offset-4">
-                Let's discuss your needs
-              </button>
-            </p>
+            ))}
           </div>
         </div>
-
-        {/* Bottom CTA */}
-        <div className="text-center mt-20">
-          <p className="text-lg text-[#1E1E1E] mb-4">
-            Not sure which tool is right for you?
-          </p>
-          <button className="bg-[#305A72] hover:bg-[#D9B6A3] text-white px-8 py-3 rounded-full font-medium transition-all duration-300 hover:scale-105">
-            Get a free consultation
-          </button>
+        
+        {/* Dots */}
+        <div className="flex justify-center mt-8 gap-3">
+          {products.map((_, idx) => (
+            <button
+              key={idx}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ease-out ${
+                active === idx 
+                  ? 'bg-[#305A72] scale-110 shadow-lg' 
+                  : 'bg-[#D9B6A3]/30 hover:bg-[#D9B6A3]/60 hover:scale-105'
+              }`}
+              onClick={() => setActive(idx)}
+              aria-label={`Go to ${products[idx].name}`}
+            />
+          ))}
+        </div>
         </div>
 
-        {/* Trust Indicators */}
-        <div className="mt-16 pt-16 border-t border-[#E9ECEF]">
-          <div className="max-w-3xl mx-auto">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-              <div className="flex items-center gap-3">
-                <Shield className="w-8 h-8 text-[#A4B9C7]" />
-                <div>
-                  <p className="font-medium text-[#305A72]">Secure & Private</p>
-                  <p className="text-sm text-[#7D9BA6]">Your data stays yours</p>
-                </div>
-              </div>
-              <div className="hidden md:block w-px h-12 bg-[#E9ECEF]" />
-              <div className="flex items-center gap-3">
-                <Clock className="w-8 h-8 text-[#A4B9C7]" />
-                <div>
-                  <p className="font-medium text-[#305A72]">Setup in Minutes</p>
-                  <p className="text-sm text-[#7D9BA6]">No tech degree required</p>
-                </div>
-              </div>
-              <div className="hidden md:block w-px h-12 bg-[#E9ECEF]" />
-              <div className="flex items-center gap-3">
-                <Zap className="w-8 h-8 text-[#A4B9C7]" />
-                <div>
-                  <p className="font-medium text-[#305A72]">See Results Fast</p>
-                  <p className="text-sm text-[#7D9BA6]">Most users save hours in week 1</p>
-                </div>
-              </div>
+      {/* Simple Modal for Learn More */}
+      {modalIndex !== -1 && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40" onClick={() => setModalIndex(-1)}>
+          <div
+            className="bg-white rounded-2xl shadow-2xl p-8 max-w-xs w-full mx-4 text-center relative"
+            onClick={e => e.stopPropagation()}
+          >
+            <button
+              className="absolute top-4 right-4 text-[#305A72] text-2xl font-bold"
+              onClick={() => setModalIndex(-1)}
+              aria-label="Close"
+            >
+              ×
+            </button>
+            <div className="mb-4 flex items-center justify-center text-4xl">{products[modalIndex].icon}</div>
+            <h3 className="text-2xl font-semibold text-[#305A72] mb-2">{products[modalIndex].name}</h3>
+            <p className="text-[#7D9BA6] font-medium mb-2">{products[modalIndex].tagline}</p>
+            <p className="text-[#1E1E1E] mb-4">{products[modalIndex].details}</p>
+            <button
+              className="w-full bg-[#305A72] hover:bg-[#7D9BA6] text-white font-bold text-lg px-8 py-3 rounded-full shadow-md transition mt-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]"
+              onClick={() => setModalIndex(-1)}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+      
+      {/* Training Offerings Section */}
+      <div className="mt-24">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-5xl font-bold text-[#305A72] mb-4">Learn AI with your team.</h2>
+          <p className="text-xl md:text-2xl text-[#7D9BA6] mb-8 font-medium">Hands-on training that gets your whole team using AI confidently.</p>
+        </div>
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
+          {/* Team AI Workshop */}
+          <div className="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center border border-[#E9ECEF]">
+            <div className="mb-4 flex items-center justify-center w-16 h-16 bg-[#D7EAFB] rounded-2xl">
+              <span className="motion-safe:transition-transform motion-safe:duration-300 group-hover:-rotate-8 group-hover:scale-110 group-hover:text-[#D9B6A3] group-focus:-rotate-8 group-focus:scale-110 group-focus:text-[#D9B6A3]">
+                <Users size={32} className="text-[#305A72]" aria-hidden="true" />
+              </span>
             </div>
+            <h3 className="text-2xl font-semibold text-[#305A72] mb-2">Team AI Workshop</h3>
+            <p className="text-[#7D9BA6] font-medium mb-2 uppercase tracking-wide">Virtual Training</p>
+            <div className="text-3xl font-bold text-[#305A72] mb-4">$1,499</div>
+            <ul className="text-left space-y-2 mb-6">
+              <li>• Live online sessions</li>
+              <li>• Hands-on practice</li>
+              <li>• Reference materials</li>
+              <li>• 30 days of support</li>
+            </ul>
+            <button className="w-full bg-[#305A72] hover:bg-[#7D9BA6] text-white font-bold text-lg px-8 py-3 rounded-full shadow-md transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]">Schedule a workshop</button>
+          </div>
+          {/* Custom AI Training */}
+          <div className="bg-[#305A72] text-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center border border-[#E9ECEF] relative">
+            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
+              <div className="bg-[#D9B6A3] text-[#1E1E1E] text-xs font-semibold px-4 py-1 rounded-full">MOST POPULAR</div>
+            </div>
+            <div className="mb-4 flex items-center justify-center w-16 h-16 bg-white/20 rounded-2xl">
+              <span className="motion-safe:transition-transform motion-safe:duration-300 group-hover:-rotate-8 group-hover:scale-110 group-hover:text-[#D9B6A3] group-focus:-rotate-8 group-focus:scale-110 group-focus:text-[#D9B6A3]">
+                <Rocket size={32} className="text-white" aria-hidden="true" />
+              </span>
+            </div>
+            <h3 className="text-2xl font-semibold text-[#305A72] mb-2">Custom AI Training</h3>
+            <p className="text-white/80 font-medium mb-2 uppercase tracking-wide">On-Site Training</p>
+            <div className="text-3xl font-bold mb-4">$2,999</div>
+            <ul className="text-left space-y-2 mb-6">
+              <li>• In-person at your office</li>
+              <li>• Solve real problems</li>
+              <li>• Build custom AI agents</li>
+              <li>• 3 months of support</li>
+            </ul>
+            <button className="w-full bg-[#305A72] hover:bg-[#7D9BA6] text-white font-bold text-lg px-8 py-3 rounded-full shadow-md transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]">Book on-site training</button>
           </div>
         </div>
       </div>
-
-      <style>{`
-        @keyframes spin-slow {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-        
-        .animate-spin-slow {
-          animation: spin-slow 20s linear infinite;
-        }
-        
-        .animation-delay-1000 {
-          animation-delay: 1s;
-        }
-        
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-      `}</style>
     </section>
   );
 };
 
-export default ProductsRedesign;
+export default Products;

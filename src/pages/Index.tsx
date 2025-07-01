@@ -1,4 +1,3 @@
-
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import Header from "@/components/sections/Header";
 import Hero from "@/components/sections/Hero";
@@ -13,7 +12,7 @@ const Index = () => {
   const { isHeaderVisible, scrollProgress } = useScrollAnimation();
 
   return (
-    <div className="min-h-screen bg-[#E9ECEF]">
+    <div className="min-h-screen">
       <Header isVisible={isHeaderVisible} />
       <Hero scrollProgress={scrollProgress} />
       <div id="problem">

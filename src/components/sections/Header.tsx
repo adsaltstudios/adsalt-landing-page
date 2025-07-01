@@ -30,7 +30,7 @@ const Header = ({ isVisible }: HeaderProps) => {
           <div className="w-8 h-8 flex items-center justify-center">
             <img 
               src="https://i.ibb.co/QvJjNWL6/path113.png" 
-              alt="Adsalt Studios Logo" 
+              alt="Adsalt Studios Logo: stylized salt shaker icon" 
               className="w-full h-full object-contain"
             />
           </div>
@@ -41,24 +41,24 @@ const Header = ({ isVisible }: HeaderProps) => {
         <nav className="hidden md:flex items-center gap-8">
           <button 
             onClick={() => scrollToSection('problem')}
-            className="text-[#305A72] hover:text-[#D9B6A3] transition-colors"
+            className="text-[#305A72] font-bold text-lg hover:text-[#7D9BA6] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]"
           >
             Why AI?
           </button>
           <button 
             onClick={() => scrollToSection('products')}
-            className="text-[#305A72] hover:text-[#D9B6A3] transition-colors"
+            className="text-[#305A72] font-bold text-lg hover:text-[#7D9BA6] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]"
           >
             What We Build
           </button>
           <button 
             onClick={() => scrollToSection('proof')}
-            className="text-[#305A72] hover:text-[#D9B6A3] transition-colors"
+            className="text-[#305A72] font-bold text-lg hover:text-[#7D9BA6] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]"
           >
             Results
           </button>
           <Button 
-            className="bg-[#D9B6A3] hover:bg-[#305A72] text-white px-6 py-2 rounded-lg transition-all duration-300"
+            className="bg-[#305A72] hover:bg-[#7D9BA6] text-white font-bold text-lg px-8 py-3 rounded-full shadow-md transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]"
             onClick={openCalendly}
           >
             Let's Talk
@@ -77,24 +77,24 @@ const Header = ({ isVisible }: HeaderProps) => {
             <nav className="flex flex-col gap-6 mt-8">
               <button 
                 onClick={() => scrollToSection('problem')}
-                className="text-[#305A72] hover:text-[#D9B6A3] transition-colors text-left text-lg"
+                className="text-[#305A72] font-bold text-lg hover:text-[#7D9BA6] transition-colors text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]"
               >
                 Why AI?
               </button>
               <button 
                 onClick={() => scrollToSection('products')}
-                className="text-[#305A72] hover:text-[#D9B6A3] transition-colors text-left text-lg"
+                className="text-[#305A72] font-bold text-lg hover:text-[#7D9BA6] transition-colors text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]"
               >
                 What We Build
               </button>
               <button 
                 onClick={() => scrollToSection('proof')}
-                className="text-[#305A72] hover:text-[#D9B6A3] transition-colors text-left text-lg"
+                className="text-[#305A72] font-bold text-lg hover:text-[#7D9BA6] transition-colors text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]"
               >
                 Results
               </button>
               <Button 
-                className="bg-[#D9B6A3] hover:bg-[#305A72] text-white px-6 py-3 rounded-lg transition-all duration-300 mt-4"
+                className="bg-[#305A72] hover:bg-[#7D9BA6] text-white font-bold text-lg px-8 py-3 rounded-full shadow-md transition mt-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]"
                 onClick={openCalendly}
               >
                 Let's Talk
