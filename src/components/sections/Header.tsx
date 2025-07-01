@@ -52,6 +52,12 @@ const Header = ({ isVisible }: HeaderProps) => {
             What We Build
           </button>
           <button 
+            onClick={() => scrollToSection('about')}
+            className="text-[#305A72] font-bold text-lg hover:text-[#7D9BA6] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]"
+          >
+            About
+          </button>
+          <button 
             onClick={() => scrollToSection('proof')}
             className="text-[#305A72] font-bold text-lg hover:text-[#7D9BA6] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]"
           >
@@ -86,6 +92,12 @@ const Header = ({ isVisible }: HeaderProps) => {
                 className="text-[#305A72] font-bold text-lg hover:text-[#7D9BA6] transition-colors text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]"
               >
                 What We Build
+              </button>
+              <button 
+                onClick={() => scrollToSection('about')}
+                className="text-[#305A72] font-bold text-lg hover:text-[#7D9BA6] transition-colors text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]"
+              >
+                About
               </button>
               <button 
                 onClick={() => scrollToSection('proof')}

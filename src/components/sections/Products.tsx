@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import { Rocket, Users, Brain, TrendingUp } from 'lucide-react';
+import React, { useState } from 'react';
+import { Rocket, Users, Brain, TrendingUp, Repeat } from 'lucide-react';
 
 const products = [
   {
@@ -16,7 +16,7 @@ const products = [
     description: 'Reduce emails and boost conversions with 24/7 AI support.',
     icon: <Users size={48} className="text-[#305A72]" />,
     details: 'Onsite Guide provides instant, AI-powered answers to your customers and team, right on your website.',
-    price: '$149',
+    price: '$599',
   },
   {
     name: 'Customer Insight Engine',
@@ -24,7 +24,7 @@ const products = [
     description: 'Unlock actionable insights from your customer data.',
     icon: <Brain size={48} className="text-[#A4B9C7]" />,
     details: 'Customer Insight Engine analyzes your data to spot trends, upsell opportunities, and churn risks.',
-    price: '$199',
+    price: '$499',
   },
   {
     name: 'Growth Autopilot',
@@ -32,42 +32,34 @@ const products = [
     description: 'Automate your outreach and track what works.',
     icon: <TrendingUp size={48} className="text-[#305A72]" />,
     details: 'Growth Autopilot automates follow-ups, personalizes outreach, and tracks your marketing performance.',
-    price: '$249',
+    price: '$899',
   },
 ];
 
 const CARD_WIDTH = 320;
 const CARD_GAP = 24;
 
-const Products = () => {
-  const [modalIndex, setModalIndex] = useState(-1); // -1 means closed
+const ProductsSection = () => {
   const [active, setActive] = useState(0);
-  const touchStartX = useRef(null);
-  const touchDeltaX = useRef(0);
+  const [modalIndex, setModalIndex] = useState(-1);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
 
-  // Carousel navigation for mobile
-  const prev = () => setActive((i) => (i === 0 ? products.length - 1 : i - 1));
-  const next = () => setActive((i) => (i === products.length - 1 ? 0 : i + 1));
+  const prev = () => setActive((prev) => (prev === 0 ? products.length - 1 : prev - 1));
+  const next = () => setActive((prev) => (prev === products.length - 1 ? 0 : prev + 1));
 
-  // Touch swipe handlers
-  const handleTouchStart = (e) => {
-    touchStartX.current = e.touches[0].clientX;
-    touchDeltaX.current = 0;
-  };
-  const handleTouchMove = (e) => {
-    if (touchStartX.current !== null) {
-      touchDeltaX.current = e.touches[0].clientX - touchStartX.current;
-    }
-  };
-  const handleTouchEnd = () => {
-    if (touchDeltaX.current > 50) prev();
-    else if (touchDeltaX.current < -50) next();
-    touchStartX.current = null;
-    touchDeltaX.current = 0;
-  };
-
-  // Fixed offset calculation - simple left translation based on active index
   const offset = active * (CARD_WIDTH + CARD_GAP);
+
+  const handleTouchStart = (e) => setTouchStart(e.targetTouches[0].clientX);
+  const handleTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    if (distance > 50) next();
+    if (distance < -50) prev();
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
 
   return (
     <section id="products" className="py-20 px-4 bg-[#D7EAFB]">
@@ -90,17 +82,17 @@ const Products = () => {
             }}
             tabIndex={0}
             aria-label={product.name}
+            onClick={() => setModalIndex(idx)}
           >
             {/* Subtle gradient background */}
             <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-gray-50/30 rounded-3xl opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
-            
             {/* Content */}
             <div className="relative z-10 flex flex-col items-center text-center h-full">
               <div className="mb-6 flex items-center justify-center p-4 rounded-2xl bg-gradient-to-br from-white to-gray-50 shadow-inner border border-white/60">
                 <span className="motion-safe:transition-transform motion-safe:duration-300 group-hover:-rotate-8 group-hover:scale-110 group-hover:text-[#D9B6A3] group-focus:-rotate-8 group-focus:scale-110 group-focus:text-[#D9B6A3]">
-                  {React.cloneElement(product.icon, { size: 32, 'aria-hidden': true })}
+                  {product.icon}
                 </span>
-                  </div>
+              </div>
               <h3 className="text-2xl font-semibold text-[#305A72] mb-2">{product.name}</h3>
               <p className="text-[#7D9BA6] font-medium mb-3 leading-relaxed">{product.tagline}</p>
               <p className="text-[#1E1E1E] mb-2 leading-relaxed flex-grow">{product.description}</p>
@@ -112,10 +104,18 @@ const Products = () => {
               >
                 Learn more
               </button>
-                  </div>
-                </div>
-          ))}
+            </div>
+          </div>
+        ))}
+        {/* Ongoing Software Costs Info Card */}
+        <div className="bg-gradient-to-br from-[#E9ECEF] to-[#F7FAFC] rounded-3xl border border-[#E9ECEF] p-8 flex flex-col items-center text-center justify-center min-h-[260px] mx-auto md:col-span-2 md:w-2/3 md:mt-8">
+          <Repeat size={40} className="mb-4 text-[#305A72]" aria-hidden="true" />
+          <h4 className="text-lg font-semibold text-[#305A72] mb-2">Ongoing Software Costs</h4>
+          <p className="text-[#7D9BA6] text-base mx-auto">
+            Ongoing pricing is <span className='font-semibold text-[#305A72]'>$29–$149/month</span>, billed separately by Flowgent.
+          </p>
         </div>
+      </div>
 
       {/* Mobile carousel */}
       <div className="md:hidden flex flex-col items-center justify-center min-h-[420px] relative w-full">
@@ -134,7 +134,6 @@ const Products = () => {
         >
           <svg width="20" height="20" fill="none" stroke="#305A72" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
         </button>
-        
         {/* Carousel viewport - Fixed container */}
         <div className="overflow-hidden w-full max-w-[320px] mx-auto relative">
           <div
@@ -159,15 +158,15 @@ const Products = () => {
                 }}
                 tabIndex={0}
                 aria-label={product.name}
+                onClick={() => setModalIndex(idx)}
               >
                 {/* Subtle gradient background */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-gray-50/30 rounded-3xl opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
-                
                 {/* Content */}
                 <div className="relative z-10 flex flex-col items-center text-center h-full">
                   <div className="mb-6 flex items-center justify-center p-4 rounded-2xl bg-gradient-to-br from-white to-gray-50 shadow-inner border border-white/60">
                     <span className="motion-safe:transition-transform motion-safe:duration-300 group-hover:-rotate-8 group-hover:scale-110 group-hover:text-[#D9B6A3] group-focus:-rotate-8 group-focus:scale-110 group-focus:text-[#D9B6A3]">
-                      {React.cloneElement(product.icon, { size: 32, 'aria-hidden': true })}
+                      {product.icon}
                     </span>
                   </div>
                   <h3 className="text-2xl font-semibold text-[#305A72] mb-2">{product.name}</h3>
@@ -186,7 +185,6 @@ const Products = () => {
             ))}
           </div>
         </div>
-        
         {/* Dots */}
         <div className="flex justify-center mt-8 gap-3">
           {products.map((_, idx) => (
@@ -202,7 +200,7 @@ const Products = () => {
             />
           ))}
         </div>
-        </div>
+      </div>
 
       {/* Simple Modal for Learn More */}
       {modalIndex !== -1 && (
@@ -289,4 +287,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default ProductsSection;
