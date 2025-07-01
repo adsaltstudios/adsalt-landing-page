@@ -270,7 +270,7 @@ const Products = () => {
               <li>• Build custom AI agents</li>
               <li>• 3 months of support</li>
             </ul>
-            <button className="w-full bg-[#305A72] hover:bg-[#7D9BA6] text-white font-bold text-lg px-8 py-3 rounded-full shadow-md transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]">Book on-site training</button>
+            <button className="w-full bg-white text-[#305A72] font-bold text-lg px-8 py-3 rounded-full border-2 border-[#305A72] hover:bg-[#D7EAFB] hover:text-[#305A72] shadow-md transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9B6A3]">Book on-site training</button>
           </div>
         </div>
       </div>
